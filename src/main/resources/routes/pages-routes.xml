@@ -10,11 +10,14 @@
     <package name="pages" namespace="/" extends="struts-default">
 
         <default-action-ref name="welcome" />
-
         <action name="welcome" class="com.freedev.dailyquest.pages.Welcome">
-            <result>/pages/index.jsp</result>
+            <result>/views/index.jsp</result>
         </action>
-        
-
+        <action name="sign_up" class="com.freedev.dailyquest.pages.Welcome" method="register">
+            <result name="success">/views/users/signup_user.jsp</result>
+        </action>
+        <action name="sign_in" class="com.freedev.dailyquest.pages.Welcome" method="login">
+            <result name="success">/views/users/signin_user.jsp</result>
+        </action>
     </package>
 </struts>

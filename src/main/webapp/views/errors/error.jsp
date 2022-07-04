@@ -6,7 +6,6 @@
 </head>
 
 <body>
-<h2><s:text name="Index.message"/></h2>
 
 <h1>404 File not Found</h1>
 

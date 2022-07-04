@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+        <validators>
+            <field name="userBean.userEmail">
+                <field-validator type="requiredstring">
+                    <message>Email is required*</message>
+                </field-validator>
+                <field-validator type="email">
+                    <message>must be a valid email*</message>
+                </field-validator>
+                
+            </field>
+            <field name="userBean.userPassword">
+                <field-validator type="requiredstring">
+                    <message>Password is required*</message>
+                </field-validator>
+                <field-validator type="stringlength">
+                    <param name="minLength">8</param>  
+                    <param name="maxLength">20</param>  
+                    <param name="trim">true</param> 
+                    <message>Password must be between ${minLength} and ${maxLength} characters in length </message>
+                </field-validator>
+            </field>
+            <field name="password_confirm">
+                <field-validator type="requiredstring">
+                    <message>Password Confirmation is required*</message>
+                </field-validator>
+            </field>
+            <field name="userBean.userAddress">
+                <field-validator type="requiredstring">
+                    <message>Address is required*</message>
+                </field-validator>
+            </field>
+            <field name="userBean.userPhoneNumber">
+                <field-validator type="requiredstring">
+                    <message>Mobile Number is required*</message>
+                </field-validator>
+                <field-validator type="regex">
+                    <param name="regex"><![CDATA[^\+?[0-9\-]+\*?$]]></param>
+                    <message>must be a valid mobile number*</message>
+                </field-validator>
+                <field-validator type="stringlength">
+                    <param name="minLength">10</param>  
+                    <param name="maxLength">11</param>  
+                    <param name="trim">true</param> 
+                    <message>should be %{maxLength} character in length</message>
+                </field-validator>
+            </field>
+        </validators>
+        
