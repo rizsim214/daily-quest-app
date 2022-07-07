@@ -14,8 +14,7 @@ public class Login extends ActionSupport implements SessionAware{
     @Override
     public String execute() throws Exception {
         String result;
-        UsersDAO ud = new UsersDAO();
-        User sessionBean = ud.fetchOneToDB(userBean.getUserEmail(), userBean.getUserPassword());
+        User sessionBean = UsersDAO.fetchOneToDB(userBean.getUserEmail(), userBean.getUserPassword());
         
         if(sessionBean.getUserEmail() == null && sessionBean.getUserPassword() == null) {
              // IF NOT PRESENT SET ERROR MESSAGE & return INPUT
@@ -23,9 +22,18 @@ public class Login extends ActionSupport implements SessionAware{
              result = INPUT;
         }else{
             userSession.put("sessionUser", sessionBean);
+            userSession.put("sessionUserID", sessionBean.getUserID());
             result = SUCCESS;
         }
         return result;
+    }
+    public String logout() {
+       if(userSession.isEmpty()){
+            userSession.remove("sessionUser");
+            return "success";
+       }else{
+        return "input";
+       }
     }
     public User getUserBean() {
         return userBean;

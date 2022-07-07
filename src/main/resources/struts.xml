@@ -8,7 +8,7 @@
     <!-- ROUTES INCLUDE FILES -->
     <include file="routes/pages-routes.xml"/>
     <include file="routes/users-routes.xml"/>
-
+    <include file="routes/quests-routes.xml"/>
     
     <package name="default" namespace="/" extends="struts-default">
  

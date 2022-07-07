@@ -6,43 +6,28 @@
         <s:include value="/views/includes/sections/_session_nav.jsp"/>
     </div>
     <div class="col">
+        <p class="text-danger"><em><s:property value="#errorMessag"/></em></p>
         <div class="container-fluid mx-auto mt-5">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Post Quest
-            </button>
-            <table class="table table-success table-hover">
+            <table class="table table-secondary table-hover">
                 <thead>
                 <tr class="table-dark">
                     <th scope="col">Quest Name</th>
-                    <th scope="col">Provider</th>
-                    <th scope="col">Timespan</th>
-                    <th scope="col">Difficulty</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Bounty(rate/hr)</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th>Gardening</th>
-                    <td>Bruce Wayne</td>
-                    <td>10AM - 4PM</td>
-                    <td>Medium</td>
-                    <td><button class="btn btn-outline-success btn-sm">view</button></td>
-                </tr>
-                <tr>
-                    <th>Cleaning Backyard</th>
-                    <td>Daymian Wayne</td>
-                    <td>10AM - 4PM</td>
-                    <td>Medium</td>
-                    <td><button class="btn btn-outline-success btn-sm">view</button></td>
-                </tr>
-                <tr>
-                    <th>Carpentry Assistance</th>
-                    <td>Bob The Builder</td>
-                    <td>10AM - 4PM</td>
-                    <td>Medium</td>
-                    <td><button class="btn btn-outline-success btn-sm">view</button></td>
-                </tr>
+                    <s:iterator value="quests">
+                    <tr>
+                        <th><s:property value="questName"/></th>
+                        <td><s:property value="questDate"/></td>
+                        <td><s:property value="questLocation"/></td>
+                        <td>P<s:property value="questBounty"/>.00 /hr</td>
+                        <td><s:a class="btn btn-outline-success btn-sm">View Quest</s:a></td>
+                    </tr>
+                </s:iterator>
                 </tbody>
             </table>
         </div>
@@ -50,23 +35,4 @@
 </div>
 <s:include value="/views/includes/_footer.jsp" />
 
-
   
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Quest Information</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <h4>Add fields for Quest Information</h4>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>

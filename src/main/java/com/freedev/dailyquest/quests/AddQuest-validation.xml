@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.2//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+        <validators>
+            <field name="questBean.questName">
+                <field-validator type="requiredstring">
+                    <param name ="trim">true</param>
+                    <message>Quest Title required*</message>
+                </field-validator>
+            </field>
+            <field name="questBean.questDate">
+                <field-validator type="required">
+                    <message>Start Date required*</message>
+                </field-validator>
+                <field-validator type="regex">
+                    <param name="regex"><![CDATA[^\d{2}-\d{2}-\d{4}$ ]]></param>
+                    <message>Date format should be separated by a (-)</message>
+                </field-validator>
+            </field>
+            <field name="questBean.questLocation">
+                <field-validator type="requiredstring">
+                    <message>Location required*</message>
+                </field-validator>
+            </field>
+            <field name="questBean.questTimespan">
+                <field-validator type="requiredstring">
+                    <message>Timespan required*</message>
+                </field-validator>
+            </field>
+            <field name="questBean.questBounty">
+                <field-validator type="required">
+                    <message>Quest Bounty is required*</message>
+                </field-validator>
+                <field-validator type="double">
+                    <message>Should have 2 placevalues and is more than ${min}*</message>
+                </field-validator>
+            </field>
+            <field name="questBean.questDifficulty">
+                <field-validator type="requiredstring">
+                    <message>Difficulty level required*</message>
+                </field-validator>
+            </field>
+            <field name="questBean.questDescription">
+                <field-validator type="requiredstring">
+                    <message>Quest information required*</message>
+                </field-validator>
+            </field>
+        </validators>
+        

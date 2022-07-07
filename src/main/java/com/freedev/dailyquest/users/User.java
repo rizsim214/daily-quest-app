@@ -5,7 +5,7 @@ import java.util.Date;
 // This is the Object Model of Users
 
 public class User {
-    private int userID;
+    private Integer userID;
     private String userEmail, userPassword, userAddress, userPhoneNumber, userGender, userName;
     private Date createdAt= new Date(), updateAt;
 

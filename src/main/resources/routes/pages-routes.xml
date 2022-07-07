@@ -19,5 +19,13 @@
         <action name="sign_in" class="com.freedev.dailyquest.pages.Welcome" method="login">
             <result name="success">/views/users/signin_user.jsp</result>
         </action>
+        <action name="quest_board" class="com.freedev.dailyquest.pages.Welcome" method="questBoard">
+            <result name="success">/views/quests/quest_board.jsp</result>
+            <result name="input">/views/quests/quest_board.jsp</result>
+        </action>
+        <action name="posted_quest" class="com.freedev.dailyquest.pages.Welcome" method="postedQuest">
+            <result name="success">/views/quests/posted_quest.jsp</result>
+            <result name="input">/views/quests/posted_quest.jsp</result>
+        </action>
     </package>
 </struts>

@@ -11,9 +11,13 @@ public class Welcome extends ActionSupport {
     public String register() {
         return "success";
     }
-
     public String login() {
         return "success";
     }
-   
+    public String questBoard() {
+        return "success";
+    }
+    public String postedQuest() {
+        return "success";
+    }
 }

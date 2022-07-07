@@ -17,7 +17,7 @@ public class UsersDAO {
     
     public UsersDAO(){};
     // CREATE METHOD
-    public boolean addOneToDB(User user) throws SQLException {
+    public static boolean addOneToDB(User user) throws SQLException {
         Connection connection = connectToDB();
         PreparedStatement prst = null;
         Boolean result = null;
@@ -43,7 +43,7 @@ public class UsersDAO {
         return result;
     }
     // GET ONE RECORD METHOD
-    public User fetchOneToDB(String email, String password) throws SQLException{
+    public static User fetchOneToDB(String email, String password) throws SQLException{
         Connection conn = connectToDB();
         PreparedStatement prst = null;
         try {
@@ -66,7 +66,7 @@ public class UsersDAO {
         return null;
     }
 
-    private Connection connectToDB() throws SQLException{
+    public static Connection connectToDB() throws SQLException{
         Connection conn = null;
         try {
             String url = "jdbc:mysql://localhost:3306/dailyquestdb?useTimezone=true&serverTimezone=UTC";
@@ -79,7 +79,7 @@ public class UsersDAO {
         return conn;
     }
     
-    private String encryptPassword(String plainPass) throws NoSuchAlgorithmException {
+    private static String encryptPassword(String plainPass) throws NoSuchAlgorithmException {
         String hashed_pass = null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");

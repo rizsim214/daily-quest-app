@@ -11,13 +11,13 @@ public class Register extends ActionSupport{
     @Override
     public String execute() throws Exception {
         String result;
-        UsersDAO ud = new UsersDAO();
+        
         if(!userBean.getUserPassword().equals(password_confirm)) {
             setErrorMessage("Password confirmation did not match*");
             result = INPUT;
         }else{
             try {
-                if(ud.addOneToDB(userBean)) {
+                if(UsersDAO.addOneToDB(userBean)) {
                     result = SUCCESS;
                 }else{
                    setErrorMessage("Account Registration Unsuccessful*");
