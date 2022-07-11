@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<!--
+  - This file is included by the struts.xml file as an example
+  - of how to break up the configuration file into multiple files.
+-->
+<struts>
+    <package name="users" namespace="/" extends="struts-default">
+        <!-- SIGN UP ACTION -->
+        <action name="signup" class="com.freedev.dailyquest.users.Register">
+            <result name="success" type="redirect">sign_in</result>
+            <result name="input" type="redirect">sign_up</result>
+            <result name="error">/views/errors/error.jsp</result>
+        </action>
+        <!-- SIGN IN ACTION -->
+        <action name="signin" class="com.freedev.dailyquest.users.Login" method="execute">
+            <result name="success" type="redirect">get_all_quests</result>
+            <result name="input" type="redirect">sign_in</result>
+        </action>
+        <!-- LOGOUT SESSION ACTION -->
+        <action name="logoutSession" class="com.freedev.dailyquest.users.Login" method="logout">
+            <result name="success" type="redirect">welcome</result>
+            <result name="input" type="redirect">welcome</result>
+        </action>
+    </package>
+</struts>

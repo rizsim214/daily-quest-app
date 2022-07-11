@@ -1,0 +1,10 @@
+com\freedev\dailyquest\users\Register.class
+com\freedev\dailyquest\quests\QuestDAO.class
+com\freedev\dailyquest\users\User.class
+com\freedev\dailyquest\users\Login.class
+com\freedev\dailyquest\pages\Welcome.class
+com\freedev\dailyquest\quests\Quest.class
+com\freedev\dailyquest\quests\GetAllQuests.class
+com\freedev\dailyquest\quests\AddQuest.class
+com\freedev\dailyquest\users\UsersDAO.class
+com\freedev\dailyquest\quests\GetPostedQuests.class

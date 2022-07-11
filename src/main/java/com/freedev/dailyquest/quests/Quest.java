@@ -7,6 +7,7 @@ public class Quest {
     private String questName, questDescription, questDate, questLocation, questTimespan, questStatus, questDifficulty;
     private Double questBounty;
     private Date createAt = new Date(), upadtedAt;
+    
     public Integer getQuestId() {
         return questId;
     }
