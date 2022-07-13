@@ -3,33 +3,39 @@
 <s:include value="/views/includes/_header.jsp" />
 <s:include value="/views/includes/sections/_session_nav.jsp"/>
 
-<div class="container-fluid mx-auto mt-5">
+<div class="container-fluid col-md-11 px-4 mt-5">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#postQuestModal">
       <i class="fas fa-plus me-2"></i>Post Quest
     </button>
     <s:include value="/views/includes/sections/_post_quest.jsp"/>
     <table class="table table-secondary table-hover">
-        <thead>
+        <thead class="text-center">
         <tr class="table-dark">
-            <th scope="col">Title</th>
-            <th scope="col">Timespan</th>
-            <th scope="col">Location</th>
-            <th scope="col">Description</th>
-            <th scope="col">Bounty(rate/hr)</th>
-            <th scope="col">Action</th>
+            <th>Title</th>
+            <th>Timespan</th>
+            <th>Location</th>
+            <th>Description</th>
+            <th>Bounty(rate/hr)</th>
+            <th >Actions</th>
+            <th></th>
+
         </tr>
         </thead>
         <tbody>
-            <s:iterator value="posted_quests" status="questRow" >
+            <s:iterator value="postedQuests" status="questRow" >
                 <tr>
                     <th><s:property value="questName"/></th>
                     <td><s:property value="questTimespan"/></td>
                     <td><s:property value="questLocation"/></td>
                     <td><s:property value="questDescription"/></td>
                     <td>P<s:property value="questBounty"/>.00 /hr</td>
-                    <td>
-                        <s:a href="#" class="btn btn-danger"><i class="fas fa-trash-can fs-5"></i></s:a>
+                    <td class="row">
+                        <s:url var="deleteQuest" action="delete_quest">
+                            <s:param name="questID" value="questId" />
+                        </s:url>
+                            <s:a href="#" class="btn btn-outline-primary "><i class="fas fa-pen fs-5"></i></s:a>
+                            <s:a href="%{deleteQuest}" class="btn btn-outline-danger "><i class="fas fa-trash-can fs-5"></i></s:a>
                     </td>
                 </tr>
             </s:iterator>

@@ -3,15 +3,11 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
-    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
     <constant name="struts.devMode" value="true"/>
-    <!-- ROUTES INCLUDE FILES -->
-    <include file="routes/pages-routes.xml"/>
-    <include file="routes/users-routes.xml"/>
-    <include file="routes/quests-routes.xml"/>
     
     <package name="default" namespace="/" extends="struts-default">
- 
+        <default-interceptor-ref name="defaultStack" />
         <default-action-ref name="index"/>
         <action name="index">
             <result type="redirectAction">
@@ -22,4 +18,9 @@
     </package>
 
     <!-- Add addition packages and configuration here. -->
+    <!-- ROUTES INCLUDE FILES -->
+    <include file="routes/pages-routes.xml"/>
+    <include file="routes/users-routes.xml"/>
+    <include file="routes/quests-routes.xml"/>
+    <include file="routes/transaction-routes.xml"/>
 </struts>

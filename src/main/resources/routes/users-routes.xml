@@ -8,6 +8,7 @@
 -->
 <struts>
     <package name="users" namespace="/" extends="struts-default">
+        <default-interceptor-ref name="defaultStack" />
         <!-- SIGN UP ACTION -->
         <action name="signup" class="com.freedev.dailyquest.users.Register">
             <result name="success" type="redirect">sign_in</result>

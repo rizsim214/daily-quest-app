@@ -2,6 +2,8 @@ package com.freedev.dailyquest.quests;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.apache.struts2.action.SessionAware;
 
@@ -13,10 +15,15 @@ public class GetAllQuests extends ActionSupport implements SessionAware{
     private String displayMessage;
     @Override
     public String execute() throws Exception {
+        Predicate<Quest> isUserProvider = quest -> !quest.getQuestProviderId().equals(userSession.get("sessionUserID"));
+        Predicate<Quest> isQuestActive = quest -> quest.getQuestStatus().equals("active");
+       
         if(QuestDAO.getAllQuestFromDB() == null){
             setDisplayMessage("No quest available yet...");
         }else{
-            setQuests(QuestDAO.getAllQuestFromDB());
+            this.quests = QuestDAO.getAllQuestFromDB().stream()
+                .filter(isUserProvider.and(isQuestActive))
+                .collect(Collectors.toList());
         }
         
         return SUCCESS;

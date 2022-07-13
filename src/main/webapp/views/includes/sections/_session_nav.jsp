@@ -18,11 +18,13 @@
             <s:property value="#session.sessionUser.userName"/>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <s:url var="posted_quests" action="get_all_posted_quests"/>
-            <li><s:a class="dropdown-item" href="%{posted_quests}">Posted Quests</s:a></li>
-            <li><a class="dropdown-item" href="#">Quests Transaction</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <s:url var="getPostedQuests" action="get_all_posted_quests"/>
             <li><a class="dropdown-item" href="#">Accepted Quests</a></li>
+            
+            <li><a class="dropdown-item" href="#">Quests Transactions</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><s:a class="dropdown-item" href="%{getPostedQuests}">Posted Quests</s:a></li>
+            <li><a class="dropdown-item" href="#">Quest Sessions</a></li>
             <li><a class="dropdown-item" href="#">Quests History</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Settings</a></li>

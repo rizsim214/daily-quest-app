@@ -21,11 +21,12 @@
         </action>
         <action name="quest_board" class="com.freedev.dailyquest.pages.Welcome" method="questBoard">
             <result name="success">/views/quests/quest_board.jsp</result>
-            <result name="input">/views/quests/quest_board.jsp</result>
         </action>
         <action name="posted_quest" class="com.freedev.dailyquest.pages.Welcome" method="postedQuest">
             <result name="success">/views/quests/posted_quest.jsp</result>
-            <result name="input">/views/quests/posted_quest.jsp</result>
+        </action>
+        <action name="seeker_list" class="com.freedev.dailyquest.pages.Welcome" method="seekerList">
+            <result name="success">/views/transactions/seeker_list.jsp</result>
         </action>
     </package>
 </struts>

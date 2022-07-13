@@ -2,6 +2,7 @@ package com.freedev.dailyquest.quests;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.apache.struts2.action.SessionAware;
@@ -10,16 +11,19 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class GetPostedQuests extends ActionSupport implements SessionAware{
     Map<String, Object> userSession;
-    List<Quest> posted_quests;
+    List<Quest> postedQuests;
     private String displayError;
+    
     @Override
     public String execute() throws Exception{
-        List<Quest> quests = QuestDAO.getAllQuestFromDB();
-        this.posted_quests = quests.stream().filter(quest -> quest.getQuestProviderId().equals(userSession.get("sessionUserID"))).collect(Collectors.toList());
+         
+        Predicate<Quest> isMyPostedQuest = quest -> quest.getQuestProviderId().equals(userSession.get("sessionUserID"));
+        Predicate<Quest> isActivePostedQuest = quest -> !quest.getQuestStatus().equals("deleted");
        
-        if(getPosted_quests() == null){
-            setDisplayError("No quests to display...");
-        }
+        setPostedQuests( QuestDAO.getAllQuestFromDB().stream()
+            .filter(isMyPostedQuest.and(isActivePostedQuest))
+            .collect(Collectors.toList()));  
+    
         return SUCCESS;
     }   
 
@@ -28,12 +32,14 @@ public class GetPostedQuests extends ActionSupport implements SessionAware{
         this.userSession = session;
     }
 
-    public List<Quest> getPosted_quests() {
-        return posted_quests;
+  
+
+    public List<Quest> getPostedQuests() {
+        return postedQuests;
     }
 
-    public void setPosted_quests(List<Quest> posted_quests) {
-        this.posted_quests = posted_quests;
+    public void setPostedQuests(List<Quest> postedQuests) {
+        this.postedQuests = postedQuests;
     }
 
     public String getDisplayError() {
@@ -43,5 +49,10 @@ public class GetPostedQuests extends ActionSupport implements SessionAware{
     public void setDisplayError(String displayError) {
         this.displayError = displayError;
     }
-    
+
+    public void setUserSession(Map<String, Object> userSession) {
+        this.userSession = userSession;
+    }
+
+  
 }

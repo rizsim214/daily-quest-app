@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Quest {
     private Integer questId, questProviderId;
-    private String questName, questDescription, questDate, questLocation, questTimespan, questStatus, questDifficulty;
+    private String questName, questDescription, questDate, questLocation, questTimespan, questStatus, questDifficulty, questProvider;
     private Double questBounty;
     private Date createAt = new Date(), upadtedAt;
     
@@ -80,15 +80,22 @@ public class Quest {
     public void setUpadtedAt(Date upadtedAt) {
         this.upadtedAt = upadtedAt;
     }
+    
+    public String getQuestProvider() {
+        return questProvider;
+    }
+    public void setQuestProvider(String questProvider) {
+        this.questProvider = questProvider;
+    }
     @Override
     public String toString() {
         return "Quest [createAt=" + createAt + ", questBounty=" + questBounty + ", questDate=" + questDate
                 + ", questDescription=" + questDescription + ", questDifficulty=" + questDifficulty + ", questId="
-                + questId + ", questLocation=" + questLocation + ", questName=" + questName + ", questProviderId="
-                + questProviderId + ", questStatus=" + questStatus + ", questTimespan=" + questTimespan + ", upadtedAt="
-                + upadtedAt + "]";
+                + questId + ", questLocation=" + questLocation + ", questName=" + questName + ", questProvider="
+                + questProvider + ", questProviderId=" + questProviderId + ", questStatus=" + questStatus
+                + ", questTimespan=" + questTimespan + ", upadtedAt=" + upadtedAt + "]";
     }
   
-
+    
     
 }

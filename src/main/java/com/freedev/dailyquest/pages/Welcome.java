@@ -20,4 +20,8 @@ public class Welcome extends ActionSupport {
     public String postedQuest() {
         return "success";
     }
+    public String seekerList() {
+        return "success";
+    }
+    
 }

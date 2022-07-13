@@ -13,11 +13,15 @@
         <result name="success" type="redirect">get_all_posted_quests</result>
         <result name="input" type="redirect">get_all_quests</result>
       </action>
+      <action name="delete_quest" class="com.freedev.dailyquest.quests.DeleteQuest">
+        <result name="success" type="chain">get_all_posted_quests</result>
+      </action>
       <action name="get_all_posted_quests" class="com.freedev.dailyquest.quests.GetPostedQuests">
         <result name="success" type="chain">posted_quest</result>
       </action>
       <action name="get_all_quests" class="com.freedev.dailyquest.quests.GetAllQuests">
         <result name="success" type="chain">quest_board</result>
       </action>
+     
     </package>
 </struts>
