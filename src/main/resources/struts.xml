@@ -10,6 +10,10 @@
         <default-interceptor-ref name="defaultStack" />
         <default-action-ref name="index"/>
         <action name="index">
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
             <result type="redirectAction">
                 <param name="actionName">welcome</param>
                 <param name="namespace">/</param>

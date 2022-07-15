@@ -8,6 +8,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -98,5 +100,28 @@ public class UsersDAO {
         return hashed_pass;
     }
    
+    public static List<User> getAllUsers() throws Exception {
+        List<User> users = null;
+        Connection conn = connectToDB();
+        String sql = "SELECT * From users_tbl";
+        try {
+            users = new ArrayList<>();
+            PreparedStatement prst = conn.prepareStatement(sql);            
+            ResultSet rs = prst.executeQuery();
 
+            while(rs.next()){
+                User user = new User();
+
+                user.setUserID(rs.getInt("user_id"));
+                user.setUserName(rs.getString("user_name"));
+                user.setUserEmail(rs.getString("user_email"));
+                user.setUserAddress(rs.getString("user_address"));
+                user.setUserPhoneNumber(rs.getString("user_contact"));
+                users.add(user);
+            };
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return users;
+    }
 }

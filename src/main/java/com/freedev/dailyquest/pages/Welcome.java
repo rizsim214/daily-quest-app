@@ -23,5 +23,7 @@ public class Welcome extends ActionSupport {
     public String seekerList() {
         return "success";
     }
-    
+    public String viewAcceptedQuests() {
+        return "success";
+    }
 }

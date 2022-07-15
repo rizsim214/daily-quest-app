@@ -8,7 +8,7 @@
             <s:form action="signin" style="max-width: 380px; width: 100%;" class="mx-auto px-3">
                 <h2 class="text-success"> Hello Master!</h2>
                 <hr>
-                <p class="text-danger mb-4"><s:property value="errorMessag"/></p>
+                <p class="text-danger mb-4"><s:property value="errorMessage"/></p>
                 <s:textfield name="userBean.userEmail" class="form-control mt-2 " placeholder="Email Address"/>
                 <s:password name="userBean.userPassword" class="form-control mt-2" placeholder="Password" />
                 <s:submit value="Sign In" class="btn btn-warning mt-3 py-3 text-light" style="width: 100% ;"/>

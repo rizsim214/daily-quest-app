@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class Login extends ActionSupport implements SessionAware{
     private User userBean;
-    private String errorMessag;
+    private String errorMessage;
     Map<String, Object> userSession;
     
     @Override
@@ -18,7 +18,7 @@ public class Login extends ActionSupport implements SessionAware{
         
         if(sessionBean.getUserEmail() == null && sessionBean.getUserPassword() == null) {
              // IF NOT PRESENT SET ERROR MESSAGE & return INPUT
-             setErrorMessag("Incorrect Email or Password*");
+             setErrorMessage("Incorrect Email or Password*");
              result = INPUT;
         }else{
             userSession.put("sessionUser", sessionBean);
@@ -41,15 +41,21 @@ public class Login extends ActionSupport implements SessionAware{
     public void setUserBean(User userBean) {
         this.userBean = userBean;
     }
-    public String getErrorMessag() {
-        return errorMessag;
-    }
-    public void setErrorMessag(String errorMessag) {
-        this.errorMessag = errorMessag;
-    }
     
     @Override
     public void withSession(Map<String, Object> session) {
         this.userSession = session;
+    }
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+    public Map<String, Object> getUserSession() {
+        return userSession;
+    }
+    public void setUserSession(Map<String, Object> userSession) {
+        this.userSession = userSession;
     }
 }

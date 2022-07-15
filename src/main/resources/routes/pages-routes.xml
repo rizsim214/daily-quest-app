@@ -28,5 +28,9 @@
         <action name="seeker_list" class="com.freedev.dailyquest.pages.Welcome" method="seekerList">
             <result name="success">/views/transactions/seeker_list.jsp</result>
         </action>
+        <action name="accepted_quests" class="com.freedev.dailyquest.pages.Welcome" method="viewAcceptedQuests">
+            <result name="success">/views/transactions/accepted_quests.jsp</result>
+        </action>
+        
     </package>
 </struts>

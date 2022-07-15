@@ -5,15 +5,16 @@ import com.opensymphony.xwork2.ActionSupport;
 public class AcceptQuestTransaction extends ActionSupport{
     private Transaction transaction;
     private String successMessage;
-    private String errorMessag;
+    private String errorMessage;
 
     public String execute() throws Exception {
         String result;        
         if(TransactionDAO.saveTransactionToDB(transaction)) {
+            ;
             setSuccessMessage("Quest Accepted! Please wait for SMS confirmation when you are chosen...");
             result = SUCCESS;
         } else {
-            setErrorMessag("Something went wrong while processing your accept request... please try again");
+            setErrorMessage("Something went wrong while processing your accept request... please try again");
             result = INPUT;
         } 
         return result;
@@ -22,19 +23,9 @@ public class AcceptQuestTransaction extends ActionSupport{
     public Transaction getTransaction() {
         return transaction;
     }
-
     public void setTransaction(Transaction transaction) {
         this.transaction = transaction;
     }
-
-    public String getErrorMessag() {
-        return errorMessag;
-    }
-
-    public void setErrorMessag(String errorMessag) {
-        this.errorMessag = errorMessag;
-    }
-
     public String getSuccessMessage() {
         return successMessage;
     }
@@ -43,6 +34,14 @@ public class AcceptQuestTransaction extends ActionSupport{
         this.successMessage = successMessage;
     }
 
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+    
     
     
 }

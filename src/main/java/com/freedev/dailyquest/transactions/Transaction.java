@@ -4,8 +4,9 @@ import java.util.Date;
 
 public class Transaction {
     private Integer questTransactionID, questID, questSeekerID, questProviderID;
-    private String questStatus;
     private Date createdAt;
+    private String questName, questProvider, contactInfo, timespan, location, description, transaction_status, questStatus;
+    private Double ratePerHour; 
 
     public Integer getQuestTransactionID() {
         return questTransactionID;
@@ -43,12 +44,63 @@ public class Transaction {
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
+    public String getQuestName() {
+        return questName;
+    }
+    public void setQuestName(String questName) {
+        this.questName = questName;
+    }
+    public String getQuestProvider() {
+        return questProvider;
+    }
+    public void setQuestProvider(String questProvider) {
+        this.questProvider = questProvider;
+    }
+    public String getContactInfo() {
+        return contactInfo;
+    }
+    public void setContactInfo(String contactInfo) {
+        this.contactInfo = contactInfo;
+    }
+    public String getTimespan() {
+        return timespan;
+    }
+    public void setTimespan(String timespan) {
+        this.timespan = timespan;
+    }
+    public String getLocation() {
+        return location;
+    }
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public Double getRatePerHour() {
+        return ratePerHour;
+    }
+    public void setRatePerHour(Double ratePerHour) {
+        this.ratePerHour = ratePerHour;
+    }
+    public String getTransaction_status() {
+        return transaction_status;
+    }
+    public void setTransaction_status(String transaction_status) {
+        this.transaction_status = transaction_status;
+    }
     @Override
     public String toString() {
-        return "Transaction [createdAt=" + createdAt + ", questID=" + questID + ", questProviderID=" + questProviderID
-                + ", questSeekerID=" + questSeekerID + ", questStatus=" + questStatus + ", questTransactionID="
-                + questTransactionID + "]";
+        return "Transaction [contactInfo=" + contactInfo + ", createdAt=" + createdAt + ", description=" + description
+                + ", location=" + location + ", questID=" + questID + ", questName=" + questName + ", questProvider="
+                + questProvider + ", questProviderID=" + questProviderID + ", questSeekerID=" + questSeekerID
+                + ", questStatus=" + questStatus + ", questTransactionID=" + questTransactionID + ", ratePerHour="
+                + ratePerHour + ", timespan=" + timespan + ", transaction_status=" + transaction_status + "]";
     }
+ 
+   
 
-        
 }

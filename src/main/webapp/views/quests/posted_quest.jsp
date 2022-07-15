@@ -34,8 +34,8 @@
                         <s:url var="deleteQuest" action="delete_quest">
                             <s:param name="questID" value="questId" />
                         </s:url>
-                            <s:a href="#" class="btn btn-outline-primary "><i class="fas fa-pen fs-5"></i></s:a>
-                            <s:a href="%{deleteQuest}" class="btn btn-outline-danger "><i class="fas fa-trash-can fs-5"></i></s:a>
+                            <s:a href="#" class="btn btn-outline-primary col"><i class="fas fa-pen fs-5"></i></s:a>
+                            <s:a href="%{deleteQuest}" class="btn btn-outline-danger col" onclick="return confirm('Are you sure you want to delete posted quest?')"><i class="fas fa-trash-can fs-5"></i></s:a>
                     </td>
                 </tr>
             </s:iterator>

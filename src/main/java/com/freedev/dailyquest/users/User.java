@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class User {
     private Integer userID;
-    private String userEmail, userPassword, userAddress, userPhoneNumber, userGender, userName;
+    private String userEmail, userPassword, userAddress, userPhoneNumber,  userName;
     private Date createdAt= new Date(), updateAt;
 
     public User() {}
@@ -51,14 +51,6 @@ public class User {
         this.userPhoneNumber = userPhoneNumber;
     }
 
-    public String getUserGender() {
-        return userGender;
-    }
-
-    public void setUserGender(String userGender) {
-        this.userGender = userGender;
-    }
-
     public String getUserName() {
         return userName;
     }
@@ -86,7 +78,7 @@ public class User {
     @Override
     public String toString() {
         return "User [createdAt=" + createdAt + ", updateAt=" + updateAt + ", userAddress=" + userAddress
-                + ", userEmail=" + userEmail + ", userGender=" + userGender + ", userID=" + userID + ", userName="
+                + ", userEmail=" + userEmail + ", userID=" + userID + ", userName="
                 + userName + ", userPassword=" + userPassword + ", userPhoneNumber=" + userPhoneNumber + "]";
     }
 

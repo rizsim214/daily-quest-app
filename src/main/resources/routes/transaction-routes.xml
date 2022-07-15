@@ -10,10 +10,13 @@
     <package name="transaction" namespace="/" extends="struts-default">
         <action name="acceptQuest" class="com.freedev.dailyquest.transactions.AcceptQuestTransaction">
             <result name="success" type="chain">get_all_quests</result>
-            <result name="input" type="redirect">get_all_quests</result>
+            <result name="input" type="redirectAction">get_all_quests</result>
         </action>
-        <action name="QuestSeekerList" class="com.freedev.dailyquest.transactions.GetAllSeekers">
-            <result name="success" type="chain">seeker_list</result>
+        <action name="getAcceptedQuests" class="com.freedev.dailyquest.transactions.GetAcceptedQuests">
+            <result name="success" type="chain">accepted_quests</result>
+        </action>
+        <action name="cancelQuest" class="com.freedev.dailyquest.transactions.CancelQuest">
+            <result name="success" type="redirectAction">getAcceptedQuests</result>
         </action>
     </package>
 </struts>
