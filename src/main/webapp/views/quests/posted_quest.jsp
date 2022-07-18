@@ -3,46 +3,40 @@
 <s:include value="/views/includes/_header.jsp" />
 <s:include value="/views/includes/sections/_session_nav.jsp"/>
 
-<div class="container-fluid col-md-11 px-4 mt-5">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#postQuestModal">
-      <i class="fas fa-plus me-2"></i>Post Quest
-    </button>
-    <s:include value="/views/includes/sections/_post_quest.jsp"/>
-    <table class="table table-secondary table-hover">
-        <thead class="text-center">
-        <tr class="table-dark">
-            <th>Title</th>
-            <th>Timespan</th>
-            <th>Location</th>
-            <th>Description</th>
-            <th>Bounty(rate/hr)</th>
-            <th >Actions</th>
-            <th></th>
-
-        </tr>
-        </thead>
-        <tbody>
-            <s:iterator value="postedQuests" status="questRow" >
-                <tr>
-                    <th><s:property value="questName"/></th>
-                    <td><s:property value="questTimespan"/></td>
-                    <td><s:property value="questLocation"/></td>
-                    <td><s:property value="questDescription"/></td>
-                    <td>P<s:property value="questBounty"/>.00 /hr</td>
-                    <td class="row">
+<main class="container-fluid col-md-11 mx-auto my-5">
+    <h3 class="text-center">Posted Quest</h3>
+    <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#postQuestModal">
+            <i class="fas fa-plus me-2"></i>Post Quest
+          </button>
+          <s:include value="/views/includes/sections/_post_quest.jsp"/>
+          <s:include value="/views/includes/sections/_search.jsp"/>
+    </div>
+    <div class="row">
+        <s:iterator value="postedQuests" status="postedQuestRows">
+            <div class="card m-2 col-md-4 rounded shadow-lg " style="width: 20rem;">
+                <div class="card-header mt-1">
+                    <p class="h5 card-title fw-bold"><s:property value="questName"/></p>
+                    <p class="h6 card-subtitle mb-2 text-muted"><s:property value="questLocation"/></p>
+                </div>
+                <div class="card-body">
+                    <p class="h6 text-dark"><span class="mx-1">P<s:property value="questBounty"/>.00 /hr </span> - <span class="mx-1"><s:property value="questTimespan"/></span></p>
+                    <hr>
+                    <p class="text-justify"><s:property value="questDescription"/></p>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-end align-items-center">
                         <s:url var="deleteQuest" action="delete_quest">
                             <s:param name="questID" value="questId" />
                         </s:url>
-                            <s:a href="#" class="btn btn-outline-primary col"><i class="fas fa-pen fs-5"></i></s:a>
-                            <s:a href="%{deleteQuest}" class="btn btn-outline-danger col" onclick="return confirm('Are you sure you want to delete posted quest?')"><i class="fas fa-trash-can fs-5"></i></s:a>
-                    </td>
-                </tr>
-            </s:iterator>
-        </tbody>
-    </table>
-</div>
+                        <p class=" h6 card-subtitle me-2 text-muted">Start Date: <s:property value="questDate"/></p>
+                        <s:a href="" class="btn btn-outline-primary col-3 mx-1"><i class="fas fa-pen fs-5"></i></s:a>
+                        <s:a href="%{deleteQuest}" class="btn btn-outline-danger col-3 mx-1" onclick="return confirm('Are you sure you want to delete posted quest?')"><i class="fas fa-trash-can fs-5"></i></s:a>
+                    </div>
+                </div>
+            </div>
+        </s:iterator>
+    </div>
+</main>
 
 <s:include value="/views/includes/_footer.jsp" />
-
-  

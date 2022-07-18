@@ -5,7 +5,13 @@ import java.util.Date;
 public class Transaction {
     private Integer questTransactionID, questID, questSeekerID, questProviderID;
     private Date createdAt;
-    private String questName, questProvider, contactInfo, timespan, location, description, transaction_status, questStatus;
+    private String questName, questProvider, questSeeker, contactInfo, timespan, location, description, transaction_status, questStatus, questDate;
+    public String getQuestDate() {
+        return questDate;
+    }
+    public void setQuestDate(String questDate) {
+        this.questDate = questDate;
+    }
     private Double ratePerHour; 
 
     public Integer getQuestTransactionID() {
@@ -99,6 +105,12 @@ public class Transaction {
                 + questProvider + ", questProviderID=" + questProviderID + ", questSeekerID=" + questSeekerID
                 + ", questStatus=" + questStatus + ", questTransactionID=" + questTransactionID + ", ratePerHour="
                 + ratePerHour + ", timespan=" + timespan + ", transaction_status=" + transaction_status + "]";
+    }
+    public String getQuestSeeker() {
+        return questSeeker;
+    }
+    public void setQuestSeeker(String questSeeker) {
+        this.questSeeker = questSeeker;
     }
  
    

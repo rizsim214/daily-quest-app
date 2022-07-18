@@ -26,4 +26,8 @@ public class Welcome extends ActionSupport {
     public String viewAcceptedQuests() {
         return "success";
     }
+    public String questTransactions() {
+        return "success";
+    }
+    
 }

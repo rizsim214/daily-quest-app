@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2">
   <div class="container">
     <s:url var="getQuests" action="get_all_quests"/>
     <s:a class="navbar-brand" href="%{getQuests}">Dashboard</s:a>
@@ -18,14 +18,19 @@
                     <s:property value="#session.sessionUser.userName"/>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <s:url var="get_posted_quests" action="get_all_posted_quests"/>
-                        <s:url var="get_accepted_quests" action="getAcceptedQuests"/>
-                        
-                        <li><s:a class="dropdown-item" href="%{get_accepted_quests}">Accepted Quests</s:a></li>
+                        <li>
+                          
+                          <s:url var="get_accepted_quests" action="getAcceptedQuests"/>
+                          <s:a class="dropdown-item" href="%{get_accepted_quests}">My Daily Quests</s:a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><s:a class="dropdown-item" href="%{get_posted_quests}">Posted Quests</s:a></li>
-                        <li><a class="dropdown-item" href="#">Quests History</a></li>
+                        <li>
+                          <s:url var="get_posted_quests" action="get_all_posted_quests"/>
+                          <s:a class="dropdown-item" href="%{get_posted_quests}">My Posted Quests</s:a></li>
+                        <li>
+                          <s:url var="get_quest_transactions" action="getAllTransaction"/>
+                          <s:a class="dropdown-item" href="%{get_quest_transactions}">My Quest Transactions</s:a></li>
                         <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">My Quests History</a></li>
                         <li><a class="dropdown-item" href="#">Settings</a></li>
                         <li><a class="dropdown-item" href="#">Profile</a></li>
                         <li><hr class="dropdown-divider"></li>

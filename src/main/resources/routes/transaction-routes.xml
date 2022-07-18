@@ -18,5 +18,8 @@
         <action name="cancelQuest" class="com.freedev.dailyquest.transactions.CancelQuest">
             <result name="success" type="redirectAction">getAcceptedQuests</result>
         </action>
+        <action name="getAllTransaction" class="com.freedev.dailyquest.transactions.GetAllTransactions">
+            <result name="success" type="chain">quest_transactions</result>
+        </action>
     </package>
 </struts>

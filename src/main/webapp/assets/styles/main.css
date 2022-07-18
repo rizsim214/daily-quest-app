@@ -7,9 +7,11 @@
 
 body{
    height: 100vh;
+   background-color: #e7e7e7;
     font-family: 'Montserrat', sans-serif;
 }
 .background{
     background-color: #38A897;
 }
+
 

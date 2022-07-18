@@ -96,4 +96,35 @@ public class TransactionDAO {
         }
         return transactions;
     }
+
+    public static List<Transaction> getAllTransactions(Object userID) throws Exception {
+        List<Transaction> transactions = null;
+        Connection conn = UsersDAO.connectToDB();
+        // Join Tables then Set Transactions with quest and user to get data
+        String sql = "SELECT * FROM quest_transaction_tbl JOIN quest_tbl ON quest_transaction_tbl.quest_id = quest_tbl.quest_id JOIN users_tbl ON quest_transaction_tbl.quest_seeker_id = users_tbl.user_id WHERE quest_provider_id = '"+userID+"'";
+        try {
+            transactions = new ArrayList<>();
+            PreparedStatement prst = conn.prepareStatement(sql);
+            ResultSet rs = prst.executeQuery();
+
+            while(rs.next()) {
+               Transaction transaction = new Transaction();
+               transaction.setQuestTransactionID(rs.getInt("quest_transaction_id"));
+               transaction.setQuestName(rs.getString("quest_name"));
+               transaction.setQuestSeeker(rs.getString("user_name"));
+               transaction.setContactInfo(rs.getString("user_contact"));
+               transaction.setQuestDate(rs.getString("quest_date"));
+               transaction.setTimespan(rs.getString("quest_timespan"));
+               transaction.setLocation(rs.getString("quest_location"));
+               transaction.setRatePerHour(rs.getDouble("quest_bounty"));
+               transaction.setDescription(rs.getString("quest_description"));
+               transaction.setTransaction_status(rs.getString("quest_transaction_status"));
+               transaction.setQuestStatus(rs.getString("quest_status"));
+               transactions.add(transaction);
+            };
+        } catch (Exception e) {
+            System.out.println(e.getMessage());            
+        }
+        return transactions;
+    }
 }

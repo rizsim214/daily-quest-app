@@ -31,6 +31,8 @@
         <action name="accepted_quests" class="com.freedev.dailyquest.pages.Welcome" method="viewAcceptedQuests">
             <result name="success">/views/transactions/accepted_quests.jsp</result>
         </action>
-        
+        <action name="quest_transactions" class="com.freedev.dailyquest.pages.Welcome" method="questTransactions">
+            <result name="success">/views/transactions/quest_transactions.jsp</result>
+        </action>
     </package>
 </struts>
