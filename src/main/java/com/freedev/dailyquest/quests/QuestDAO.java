@@ -39,10 +39,6 @@ public class QuestDAO {
     public Quest getQuestToDB(int questId) throws Exception {
         return null;
     }
-    public boolean updateQuestFromDB(int questId) throws Exception {
-
-        return false;
-    }
     
     // DELETE DATA FROM DATABASE
     public static boolean deleteQuestFromDB(int questID) throws Exception {
@@ -52,6 +48,23 @@ public class QuestDAO {
         try {
             PreparedStatement prst = conn.prepareStatement(sql);
             prst.setString(1, "deleted");
+            prst.setDate(2, Date.valueOf(LocalDate.now()));
+            prst.execute();
+            result = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
+
+      // UPDATED DATA FROM DATABASE TO ACTIVE
+      public static boolean updateQuestStatusToActive(int questID) throws Exception {
+        boolean result = false;
+        Connection conn = UsersDAO.connectToDB();
+        String sql = "UPDATE quest_tbl SET quest_status = ?, updatedAt = ? WHERE quest_id = '"+questID+"'";
+        try {
+            PreparedStatement prst = conn.prepareStatement(sql);
+            prst.setString(1, "active");
             prst.setDate(2, Date.valueOf(LocalDate.now()));
             prst.execute();
             result = true;

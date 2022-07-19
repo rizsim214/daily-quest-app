@@ -18,11 +18,12 @@
                     <s:property value="#session.sessionUser.userName"/>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <small class="text-secondary ms-3">Quest Seekers</small>
                         <li>
-                          
-                          <s:url var="get_accepted_quests" action="getAcceptedQuests"/>
-                          <s:a class="dropdown-item" href="%{get_accepted_quests}">My Daily Quests</s:a></li>
+                            <s:url var="get_accepted_quests" action="getAcceptedQuests"/>
+                            <s:a class="dropdown-item" href="%{get_accepted_quests}">My Daily Quests</s:a></li>
                         <li><hr class="dropdown-divider"></li>
+                        <small class="text-secondary ms-3">Quest Provider</small>
                         <li>
                           <s:url var="get_posted_quests" action="get_all_posted_quests"/>
                           <s:a class="dropdown-item" href="%{get_posted_quests}">My Posted Quests</s:a></li>
@@ -30,8 +31,7 @@
                           <s:url var="get_quest_transactions" action="getAllTransaction"/>
                           <s:a class="dropdown-item" href="%{get_quest_transactions}">My Quest Transactions</s:a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">My Quests History</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">My History</a></li>
                         <li><a class="dropdown-item" href="#">Profile</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <s:url var="sign_out" action="logoutSession"/>

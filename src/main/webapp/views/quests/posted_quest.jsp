@@ -4,7 +4,10 @@
 <s:include value="/views/includes/sections/_session_nav.jsp"/>
 
 <main class="container-fluid col-md-11 mx-auto my-5">
-    <h3 class="text-center">Posted Quest</h3>
+    <div class="text-center mb-2">
+        <h3 class=" mt-3 mb-0">Posted Quests</h3>
+        <small class="text-secondary mt-0">(Here you can see all your posted quests as unless deleted)</small>
+    </div>
     <div class="d-flex justify-content-between">
         <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#postQuestModal">
             <i class="fas fa-plus me-2"></i>Post Quest

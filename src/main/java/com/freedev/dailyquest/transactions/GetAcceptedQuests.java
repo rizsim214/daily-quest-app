@@ -20,8 +20,9 @@ public class GetAcceptedQuests extends ActionSupport implements SessionAware{
         Predicate<Transaction> isTransactionStatusAccepted = transaction -> transaction.getTransaction_status().equals("accepted");
         
         setTransactions(tempTransaction.stream()
-            .filter(isQuestActive.and(isTransactionCancelled).and(isTransactionStatusAccepted))
+            .filter(isQuestActive.and(isTransactionStatusAccepted).or(isTransactionCancelled))
             .collect(Collectors.toList()));
+            System.out.println(tempTransaction);
         return SUCCESS;
     }
 

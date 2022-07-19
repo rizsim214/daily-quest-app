@@ -25,5 +25,8 @@
             <result name="success" type="redirectAction">welcome</result>
             <result name="input" type="redirectAction">welcome</result>
         </action>
+        <action name="fetchUser" class="com.freedev.dailyquest.users.FetchUser">
+            <result name="success" type="chain">user_profile</result>
+        </action>
     </package>
 </struts>

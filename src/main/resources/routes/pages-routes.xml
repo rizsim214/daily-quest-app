@@ -34,5 +34,8 @@
         <action name="quest_transactions" class="com.freedev.dailyquest.pages.Welcome" method="questTransactions">
             <result name="success">/views/transactions/quest_transactions.jsp</result>
         </action>
+        <action name="user_profile" class="com.freedev.dailyquest.pages.Welcome" method="userProfile">
+            <result name="success">/views/users/user_profile.jsp</result>
+        </action>
     </package>
 </struts>

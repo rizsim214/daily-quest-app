@@ -32,7 +32,7 @@ public class Login extends ActionSupport implements SessionAware{
             userSession.remove("sessionUser");
             return "success";
        }else{
-        return "input";
+            return "input";
        }
     }
     public User getUserBean() {

@@ -1,8 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<style>
-    
-</style>
 <s:include value="/views/includes/_header.jsp" />
 <s:include value="/views/includes/sections/_navigation.jsp"/>
 <div class="background vh-100">

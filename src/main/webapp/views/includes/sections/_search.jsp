@@ -2,7 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <div class="row">
     <form action="#" class="col">
-        <input type="text" class="form-control" style="width: 18rem;" placeholder="Search Quest">
+        <input type="text" class="form-control"  placeholder="Search Quest">
     </form>
 <!-- Example single danger button -->
     <div class="col">

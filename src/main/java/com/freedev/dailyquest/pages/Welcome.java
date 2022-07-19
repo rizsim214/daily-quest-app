@@ -29,5 +29,8 @@ public class Welcome extends ActionSupport {
     public String questTransactions() {
         return "success";
     }
+    public String userProfile() {
+        return "success";
+    }
     
 }
