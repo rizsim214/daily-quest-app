@@ -19,9 +19,9 @@ public class GetPostedQuests extends ActionSupport implements SessionAware{
          
         Predicate<Quest> isMyPostedQuest = quest -> quest.getQuestProviderId().equals(userSession.get("sessionUserID"));
         Predicate<Quest> isActivePostedQuest = quest -> !quest.getQuestStatus().equals("deleted");
-       
+        Predicate<Quest> isNotQuestDone = quest -> !quest.getQuestStatus().equals("done");
         setPostedQuests( QuestDAO.getAllQuestFromDB().stream()
-            .filter(isMyPostedQuest.and(isActivePostedQuest))
+            .filter(isMyPostedQuest.and(isActivePostedQuest).and(isNotQuestDone))
             .collect(Collectors.toList()));  
     
         return SUCCESS;

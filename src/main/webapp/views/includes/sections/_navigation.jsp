@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<nav class="navbar navbar-expand-lg navbar-light bg-light py-4 shadow-lg">
+<nav class="navbar navbar-expand-lg navbar-light bg-light py-4 shadow-sm">
     <div class="container">
         <s:url var="home" action="welcome"/>
         <s:a class="navbar-brand" href="%{home}">Daily Quest</s:a>
@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto d-flex justify-content-sm-center align-items-center ">
                 <li class="nav-item mx-2">
-                    <a class="nav-link"  href="#">Home</a>
+                    <s:a class="nav-link"  href="%{home}">Home</s:a>
                 </li>
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="#">About Us</a>

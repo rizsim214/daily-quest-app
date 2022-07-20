@@ -33,7 +33,9 @@
             <s:include value="/views/includes/sections/_search.jsp"/>
         </div>
         <div class="row mt-3">
+            <s:if test="transactions.isEmpty() != true ">
             <s:iterator value="transactions" status="transactionQuestRows">
+               
                     <div class="card m-2 shadow-lg" style="width: 22rem;">
                         <div class="card-header mt-2">
                             <p class="h4 card-title text-center fw-bold"><s:property value="questName"/></p>
@@ -60,12 +62,14 @@
                                 <s:url var="start_quest" action="startQuest" >
                                     <s:param name="transaction.questTransactionID" value="questTransactionID" />
                                 </s:url>
-                            <s:a href="%{start_quest}" class="btn btn-outline-success  me-2"><i class="fas fa-hourglass-start"></i></s:a>
+                            <s:a href="%{start_quest}" class="btn btn-outline-success  me-2"><i class="fa-solid fa-clock-rotate-left"></i></s:a>
                             <s:a href="%{cancel_quest}"  onclick="return confirm('Are you sure you want to cancel quest?')" class="btn btn-outline-warning"><i class="fas fa-xmark"></i> </s:a>
                             </div>
                         </div>
                     </div>
             </s:iterator>
+            </s:if>
+            <h3 class="text-center text-secondary"> <s:property value="displayMessage"/></h3>
         </div>
     </div>
 <s:include value="/views/includes/_footer.jsp" />

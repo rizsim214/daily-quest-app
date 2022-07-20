@@ -17,11 +17,11 @@
         </div>
     </s:elseif>
 </div>
-<div class="container mx-auto mb-5 pb-4">
+<div class="container mx-auto mb-5 pb-4 px-5">
     <div class="text-center mb-2">
         <h3 class=" mt-3 mb-0">Quests Board</h3>
         <s:url var="get_posted_quests" action="get_all_posted_quests"/>
-        <small class="text-secondary mt-0">(Here you can see posted quests from other users. To check your posted quests click <s:a href="%{get_posted_quests}" class="text-decoration-none text-primary">Here</s:a> )</small>
+        <small class="text-secondary mt-0">(Here you can see posted quests from other users. <br> To check your posted quests click <s:a href="%{get_posted_quests}" class="text-decoration-none text-primary">Here</s:a> )</small>
     </div>
     <div class="d-flex justify-content-end">
         <s:include value="/views/includes/sections/_search.jsp"/>

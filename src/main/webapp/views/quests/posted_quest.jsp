@@ -3,7 +3,7 @@
 <s:include value="/views/includes/_header.jsp" />
 <s:include value="/views/includes/sections/_session_nav.jsp"/>
 
-<main class="container-fluid col-md-11 mx-auto my-5">
+<main class="container-fluid col-md-11 mx-auto my-5 px-5">
     <div class="text-center mb-2">
         <h3 class=" mt-3 mb-0">Posted Quests</h3>
         <small class="text-secondary mt-0">(Here you can see all your posted quests as unless deleted)</small>
@@ -21,6 +21,7 @@
                 <div class="card-header mt-1">
                     <p class="h5 card-title fw-bold"><s:property value="questName"/></p>
                     <p class="h6 card-subtitle mb-2 text-muted"><s:property value="questLocation"/></p>
+                    <small class="text-secondary">Status: <s:property value="questStatus"/></small>
                 </div>
                 <div class="card-body">
                     <p class="h6 text-dark"><span class="mx-1">P<s:property value="questBounty"/>.00 /hr </span> - <span class="mx-1"><s:property value="questTimespan"/></span></p>

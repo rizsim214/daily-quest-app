@@ -44,7 +44,7 @@ public class QuestDAO {
     public static boolean deleteQuestFromDB(int questID) throws Exception {
         boolean result = false;
         Connection conn = UsersDAO.connectToDB();
-        String sql = "UPDATE quest_tbl SET quest_status = ?, updatedAt = ? WHERE quest_id = '"+questID+"'";
+        String sql = "UPDATE quest_tbl SET quest_status = ?, quest_updatedAt = ? WHERE quest_id = '"+questID+"'";
         try {
             PreparedStatement prst = conn.prepareStatement(sql);
             prst.setString(1, "deleted");
@@ -58,13 +58,13 @@ public class QuestDAO {
     }
 
       // UPDATED DATA FROM DATABASE TO ACTIVE
-      public static boolean updateQuestStatusToActive(int questID) throws Exception {
+      public static boolean updateQuestStatusToActive(int questID, String questStatus) throws Exception {
         boolean result = false;
         Connection conn = UsersDAO.connectToDB();
-        String sql = "UPDATE quest_tbl SET quest_status = ?, updatedAt = ? WHERE quest_id = '"+questID+"'";
+        String sql = "UPDATE quest_tbl SET quest_status = ?, quest_updatedAt = ? WHERE quest_id = '"+questID+"'";
         try {
             PreparedStatement prst = conn.prepareStatement(sql);
-            prst.setString(1, "active");
+            prst.setString(1, questStatus);
             prst.setDate(2, Date.valueOf(LocalDate.now()));
             prst.execute();
             result = true;
@@ -77,7 +77,7 @@ public class QuestDAO {
     public static List<Quest> getAllQuestFromDB() throws Exception {
         List<Quest> allQuests = null;
         Connection conn = UsersDAO.connectToDB();
-        String sql = "Select * FROM quest_tbl JOIN users_tbl ON users_tbl.user_id = quest_tbl.quest_provider_fk_id ";
+        String sql = "Select * FROM quest_tbl JOIN users_tbl ON users_tbl.user_id = quest_tbl.quest_provider_fk_id ORDER BY quest_id DESC";
         try {
             allQuests = new ArrayList<>();
             PreparedStatement prst = conn.prepareStatement(sql);

@@ -17,28 +17,33 @@
             <th scope="col">Date</th>
             <th scope="col">Status</th>
             <th colspan="2"></th>
-            
-            
             </tr>
         </thead>
         <tbody>
-            
             <s:iterator value="transactions" >
-                <s:property/>
                 <tr class="table-success">
                     <th scope="row"><s:property value="questName"/></th>
                     <td><s:property value="#session.sessionUser.userName"/></td>
                     <td><s:property value="questSeeker"/></td>
                     <td><s:property value="questDate"/></td>
-                    <td><s:property value="transaction_status"/></td>
+                    <s:if test="transaction_status == 'accepted'">
+                        <td class="text-success fw-bold text-capitalize"><i class="fas fa-check-circle me-1"></i><s:property value="transaction_status"/></td>
+                    </s:if>
+                    <s:elseif test="transaction_status == 'ongoing'">
+                        <td class="text-primary fw-bold text-capitalize"><i class="fas fa-hourglass-start me-1"></i><s:property value="transaction_status"/></td>
+                    </s:elseif>
                     <s:if test="transaction_status == 'ongoing'">
                         <s:url var="end_quest" action="endQuest" >
-                            <s:param name="transaction.questID"/>
+                            <s:param name="transaction.questID" value="questID"/>
                             <s:param name="transaction.questTransactionID" value="questTransactionID" />
                         </s:url>
-                        <td><s:a class="btn btn-outline-success" href="#"><i class="fas fa-check"></i></s:a></td>
+                        <td><s:a class="btn btn-primary" href="%{end_quest}"><i class="fas fa-check"></i></s:a></td>
                     </s:if>
-                    <td><s:a href="#" class="btn btn-warning" onclick="return confirm('You are about to cancel transaction, proceed?')" ><i class="fas fa-xmark"></i></s:a></td>
+                    <s:url var="cancel_transaction" action="cancelTransaction" >
+                        <s:param name="transaction.questID" value="questID" />
+                        <s:param name="transaction.questTransactionID" value="questTransactionID" />
+                    </s:url>
+                    <td><s:a href="%{cancel_transaction}" class="btn btn-outline-warning" onclick="return confirm('You are about to cancel transaction, proceed?')" ><i class="fas fa-xmark"></i></s:a></td>
                 </tr>
         </s:iterator>
         </tbody>

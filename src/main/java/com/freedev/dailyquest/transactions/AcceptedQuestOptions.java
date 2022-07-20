@@ -6,9 +6,15 @@ public class AcceptedQuestOptions extends ActionSupport{
     private Transaction transaction;
     private String message;
     private String successMessage;
+
+    // CANCEL QUEST METHOD
     public String execute() throws Exception{
+        
         String result = ERROR;
-        if(TransactionDAO.cancelQuestTransactionStatus(transaction) == true) {
+        String transactionStatus = "cancelled";
+        String questStatus = "active";
+
+        if(TransactionDAO.QuestTransactionStatus(transaction, transactionStatus, questStatus) == true) {
             setMessage("Chosen quest has been cancelled...");
             result = SUCCESS;
         }else {
@@ -16,14 +22,29 @@ public class AcceptedQuestOptions extends ActionSupport{
         }   
         return result;
     }
-
+    // SET TRANSACTION TO ONGOING METHOD
     public String startQuest() throws Exception {
         
         String result="error";
-        if(TransactionDAO.updateQuestTransactionStatusToOnGoing(transaction.getQuestTransactionID()) == true) {
+        String status = "ongoing";
+        if(TransactionDAO.updateQuestTransactionStatus(transaction,status) == true) {
             setSuccessMessage("Quest has been Initiated.. ");
         }else{
             setMessage("Something went wrong while initiating quest");
+        }
+        return result;
+    }
+    // SET TRANSACTION TO DONE
+    public String endQuest() throws Exception {
+        
+        String result="error";
+        String status = "done";
+        String questStatus="done";
+        if(TransactionDAO.QuestTransactionStatus(transaction, status, questStatus) == true) {
+            setSuccessMessage("Quest has Ended...");
+            result = "success";
+        }else{
+            setMessage("Something went wrong while ending quest");
         }
         return result;
     }

@@ -4,13 +4,14 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 // This file is where the DB queries are implemented
@@ -68,6 +69,69 @@ public class UsersDAO {
         return null;
     }
 
+    public static User getOneUserFromDB(Object object) throws Exception {
+        User user = null;
+        Connection conn = connectToDB();
+        String sql = "SELECT * FROM users_tbl WHERE user_id = '"+object+"'";
+        try {
+            PreparedStatement prst = conn.prepareStatement(sql);
+            ResultSet rs = prst.executeQuery();
+
+            if(rs.next()){
+                user = new User();
+                user.setUserID(rs.getInt("user_id"));
+                user.setUserEmail(rs.getString("user_email"));
+                user.setUserName(rs.getString("user_name"));
+                user.setUserAddress(rs.getString("user_address"));
+                user.setUserPhoneNumber(rs.getString("user_contact"));
+                user.setUserPassword(rs.getString("user_password"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+    public static boolean editUser(User user) throws Exception {
+        boolean result = false;
+        Connection conn = connectToDB();
+        String sql = "UPDATE users_tbl SET user_email = ?, user_name = ?, user_address = ?, user_contact = ?, user_password = ?, updatedAt = ? WHERE user_email = '"+user.getUserEmail()+"'";
+        try {
+            PreparedStatement prst = conn.prepareStatement(sql);
+            prst.setString(1, user.getUserEmail());
+            prst.setString(2, user.getUserName());
+            prst.setString(3, user.getUserAddress());
+            prst.setString(4, user.getUserPhoneNumber());
+            prst.setString(5, encryptPassword(user.getUserPassword()));
+            prst.setDate(6, Date.valueOf(LocalDate.now()));
+            result = prst.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return result;
+    }
+
+    public static boolean editUserWithHidden(User user, String hidden) throws Exception {
+        boolean result = false;
+        Connection conn = connectToDB();
+        String sql = "UPDATE users_tbl SET user_email = ?, user_name = ?, user_address = ?, user_contact = ?, user_password = ?, updatedAt = ? WHERE user_email = '"+user.getUserEmail()+"'";
+        try {
+            PreparedStatement prst = conn.prepareStatement(sql);
+            prst.setString(1, user.getUserEmail());
+            prst.setString(2, user.getUserName());
+            prst.setString(3, user.getUserAddress());
+            prst.setString(4, user.getUserPhoneNumber());
+            prst.setString(5, hidden);
+            prst.setDate(6, Date.valueOf(LocalDate.now()));
+            result = prst.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return result;
+    }
+    
     public static Connection connectToDB() throws SQLException{
         Connection conn = null;
         try {

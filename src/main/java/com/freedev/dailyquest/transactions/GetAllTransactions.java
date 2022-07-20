@@ -13,7 +13,7 @@ public class GetAllTransactions extends ActionSupport implements SessionAware{
     Map<String, Object> userSession;
     List<Transaction> transactions;
     public String execute() throws Exception {
-        List<Transaction> tempTransactions = TransactionDAO.getAllTransactions(userSession.get("sessionUserID"));
+        List<Transaction> tempTransactions = TransactionDAO.getAllProviderTransactions(userSession.get("sessionUserID"));
         Predicate<Transaction> isTransactionAccepted = transaction -> transaction.getTransaction_status().equals("accepted");
         Predicate<Transaction> isTransactionOngoing = transaction -> transaction.getTransaction_status().equals("ongoing");
 

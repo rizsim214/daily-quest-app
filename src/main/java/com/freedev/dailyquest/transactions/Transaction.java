@@ -2,10 +2,12 @@ package com.freedev.dailyquest.transactions;
 
 import java.util.Date;
 
+
 public class Transaction {
     private Integer questTransactionID, questID, questSeekerID, questProviderID;
-    private Date createdAt;
+    private Date createdAt,updatedAt;
     private String questName, questProvider, questSeeker, contactInfo, timespan, location, description, transaction_status, questStatus, questDate;
+    
     public String getQuestDate() {
         return questDate;
     }
@@ -98,19 +100,27 @@ public class Transaction {
     public void setTransaction_status(String transaction_status) {
         this.transaction_status = transaction_status;
     }
-    @Override
-    public String toString() {
-        return "Transaction [contactInfo=" + contactInfo + ", createdAt=" + createdAt + ", description=" + description
-                + ", location=" + location + ", questID=" + questID + ", questName=" + questName + ", questProvider="
-                + questProvider + ", questProviderID=" + questProviderID + ", questSeekerID=" + questSeekerID
-                + ", questStatus=" + questStatus + ", questTransactionID=" + questTransactionID + ", ratePerHour="
-                + ratePerHour + ", timespan=" + timespan + ", transaction_status=" + transaction_status + "]";
-    }
+   
     public String getQuestSeeker() {
         return questSeeker;
     }
     public void setQuestSeeker(String questSeeker) {
         this.questSeeker = questSeeker;
+    }
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+    @Override
+    public String toString() {
+        return "Transaction [contactInfo=" + contactInfo + ", createdAt=" + createdAt + ", description=" + description
+                + ", location=" + location + ", questDate=" + questDate + ", questID=" + questID + ", questName="
+                + questName + ", questProvider=" + questProvider + ", questProviderID=" + questProviderID
+                + ", questSeeker=" + questSeeker + ", questSeekerID=" + questSeekerID + ", questStatus=" + questStatus
+                + ", questTransactionID=" + questTransactionID + ", ratePerHour=" + ratePerHour + ", timespan="
+                + timespan + ", transaction_status=" + transaction_status + ", updatedAt=" + updatedAt + "]";
     }
  
    

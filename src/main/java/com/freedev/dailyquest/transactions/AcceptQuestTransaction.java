@@ -10,7 +10,6 @@ public class AcceptQuestTransaction extends ActionSupport{
     public String execute() throws Exception {
         String result;        
         if(TransactionDAO.saveTransactionToDB(transaction)) {
-            ;
             setSuccessMessage("Quest Accepted! Please wait for SMS confirmation when you are chosen...");
             result = SUCCESS;
         } else {

@@ -50,13 +50,13 @@ public class TransactionDAO {
         return result;
     }
 
-    public static boolean updateQuestTransactionStatusToOnGoing(int transactionID) throws Exception {
+    public static boolean updateQuestTransactionStatus(Transaction transaction, String status) throws Exception {
         boolean result = false;
         Connection conn = UsersDAO.connectToDB();
-        String sql = "UPDATE quest_transaction_tbl SET quest_transaction_status = ? ,updatedAt = ? WHERE quest_transaction_id = '"+transactionID+"'";
+        String sql = "UPDATE quest_transaction_tbl SET quest_transaction_status = ? ,updatedAt = ? WHERE quest_transaction_id = '"+transaction.getQuestTransactionID()+"'";
         try {
             PreparedStatement prst = conn.prepareStatement(sql);
-            prst.setString(1, "ongoing");
+            prst.setString(1, status);
             prst.setDate(2, Date.valueOf(LocalDate.now()));
             prst.execute();
             result = true;
@@ -65,31 +65,29 @@ public class TransactionDAO {
         }
         return result;
     }
-    public static boolean cancelQuestTransactionStatus(Transaction transaction) throws Exception {
+    
+    public static boolean QuestTransactionStatus(Transaction transaction, String status, String questStatus) throws Exception {
         boolean result = false;
         Connection conn = UsersDAO.connectToDB();
         String sql = "Update quest_transaction_tbl SET quest_transaction_status = ?, updatedAt = ? WHERE quest_transaction_id = '"+transaction.getQuestTransactionID()+"'";
         try {
             PreparedStatement prst = conn.prepareStatement(sql);
-            prst.setString(1, "cancelled");
+            prst.setString(1, status);
             prst.setDate(2, Date.valueOf(LocalDate.now()));
             prst.execute();
-            QuestDAO.updateQuestStatusToActive(transaction.getQuestID());
+            QuestDAO.updateQuestStatusToActive(transaction.getQuestID(), questStatus);
             result = true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return result;
     }
-    public static boolean removeTransactionFromDB() throws Exception {
-        return false;
-    }
-    
+   
     public static List<Transaction> getAcceptedTransactions(Object userID) throws Exception {
         List<Transaction> transactions = null;
         Connection conn = UsersDAO.connectToDB();
         // Join Tables then Set Transactions with quest and user to get data
-        String sql = "SELECT * FROM quest_transaction_tbl JOIN quest_tbl ON quest_transaction_tbl.quest_transaction_quest_id = quest_tbl.quest_id JOIN users_tbl ON quest_transaction_tbl.quest_provider_id = users_tbl.user_id WHERE quest_seeker_id = '"+userID+"'";
+        String sql = "SELECT * FROM quest_transaction_tbl JOIN quest_tbl ON quest_transaction_tbl.quest_transaction_quest_id = quest_tbl.quest_id JOIN users_tbl ON quest_transaction_tbl.quest_provider_id = users_tbl.user_id WHERE quest_seeker_id = '"+userID+"' ORDER BY quest_transaction_id DESC";
         try {
             transactions = new ArrayList<>();
             PreparedStatement prst = conn.prepareStatement(sql);
@@ -117,11 +115,11 @@ public class TransactionDAO {
         return transactions;
     }
 
-    public static List<Transaction> getAllTransactions(Object userID) throws Exception {
+    public static List<Transaction> getAllProviderTransactions(Object userID) throws Exception {
         List<Transaction> transactions = null;
         Connection conn = UsersDAO.connectToDB();
         // Join Tables then Set Transactions with quest and user to get data
-        String sql = "SELECT * FROM quest_transaction_tbl JOIN quest_tbl ON quest_transaction_tbl.quest_transaction_quest_id = quest_tbl.quest_id JOIN users_tbl ON quest_transaction_tbl.quest_seeker_id = users_tbl.user_id WHERE quest_provider_id = '"+userID+"'";
+        String sql = "SELECT * FROM quest_transaction_tbl JOIN quest_tbl ON quest_transaction_tbl.quest_transaction_quest_id = quest_tbl.quest_id JOIN users_tbl ON quest_transaction_tbl.quest_seeker_id = users_tbl.user_id WHERE quest_provider_id = '"+userID+"' ORDER BY quest_transaction_id DESC";
         try {
             transactions = new ArrayList<>();
             PreparedStatement prst = conn.prepareStatement(sql);
@@ -139,6 +137,68 @@ public class TransactionDAO {
                transaction.setLocation(rs.getString("quest_location"));
                transaction.setRatePerHour(rs.getDouble("quest_bounty"));
                transaction.setDescription(rs.getString("quest_description"));
+               transaction.setTransaction_status(rs.getString("quest_transaction_status"));
+               transaction.setQuestStatus(rs.getString("quest_status"));
+               transactions.add(transaction);
+            };
+        } catch (Exception e) {
+            System.out.println(e.getMessage());            
+        }
+        return transactions;
+    }
+
+    public static List<Transaction> getAllTransactions() throws Exception {
+        List<Transaction> transactions = null;
+        Connection conn = UsersDAO.connectToDB();
+        // Join Tables then Set Transactions with quest and user to get data
+        String sql = "SELECT * FROM quest_transaction_tbl JOIN quest_tbl ON quest_transaction_tbl.quest_transaction_quest_id = quest_tbl.quest_id JOIN users_tbl ON quest_transaction_tbl.quest_seeker_id = users_tbl.user_id WHERE quest_transaction_status = 'done' ORDER BY quest_transaction_id DESC";
+        try {
+            transactions = new ArrayList<>();
+            PreparedStatement prst = conn.prepareStatement(sql);
+            ResultSet rs = prst.executeQuery();
+
+            while(rs.next()) {
+               Transaction transaction = new Transaction();
+               transaction.setQuestTransactionID(rs.getInt("quest_transaction_id"));
+               transaction.setQuestName(rs.getString("quest_name"));
+               transaction.setQuestProviderID(rs.getInt("quest_provider_id"));
+               transaction.setQuestSeekerID(rs.getInt("quest_seeker_id"));
+               transaction.setQuestID(rs.getInt("quest_transaction_quest_id"));
+               transaction.setQuestSeeker(rs.getString("user_name"));
+               transaction.setRatePerHour(rs.getDouble("quest_bounty"));
+               transaction.setUpdatedAt(rs.getDate("updatedAt"));
+               transaction.setLocation(rs.getString("quest_location"));
+               transaction.setTransaction_status(rs.getString("quest_transaction_status"));
+               transaction.setQuestStatus(rs.getString("quest_status"));
+               transactions.add(transaction);
+            };
+        } catch (Exception e) {
+            System.out.println(e.getMessage());            
+        }
+        return transactions;
+    }
+
+    public static List<Transaction> getAllSeekerTransactions() throws Exception {
+        List<Transaction> transactions = null;
+        Connection conn = UsersDAO.connectToDB();
+        // Join Tables then Set Transactions with quest and user to get data
+        String sql = "SELECT * FROM quest_transaction_tbl JOIN quest_tbl ON quest_transaction_tbl.quest_transaction_quest_id = quest_tbl.quest_id JOIN users_tbl ON quest_transaction_tbl.quest_provider_id = users_tbl.user_id WHERE quest_transaction_status = 'done' ORDER BY quest_transaction_id DESC";
+        try {
+            transactions = new ArrayList<>();
+            PreparedStatement prst = conn.prepareStatement(sql);
+            ResultSet rs = prst.executeQuery();
+
+            while(rs.next()) {
+               Transaction transaction = new Transaction();
+               transaction.setQuestTransactionID(rs.getInt("quest_transaction_id"));
+               transaction.setQuestName(rs.getString("quest_name"));
+               transaction.setQuestProviderID(rs.getInt("quest_provider_id"));
+               transaction.setQuestSeekerID(rs.getInt("quest_seeker_id"));
+               transaction.setQuestID(rs.getInt("quest_transaction_quest_id"));
+               transaction.setQuestProvider(rs.getString("user_name"));
+               transaction.setRatePerHour(rs.getDouble("quest_bounty"));
+               transaction.setUpdatedAt(rs.getDate("updatedAt"));
+               transaction.setLocation(rs.getString("quest_location"));
                transaction.setTransaction_status(rs.getString("quest_transaction_status"));
                transaction.setQuestStatus(rs.getString("quest_status"));
                transactions.add(transaction);

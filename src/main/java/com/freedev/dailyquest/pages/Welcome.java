@@ -32,5 +32,7 @@ public class Welcome extends ActionSupport {
     public String userProfile() {
         return "success";
     }
-    
+    public String questHistory() {
+        return "success";
+    }
 }
