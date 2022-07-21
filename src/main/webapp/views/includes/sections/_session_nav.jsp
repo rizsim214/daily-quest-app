@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2">
-    <div class="container">
+    <div class="container col-md-9 mx-auto">
         <s:url var="getQuests" action="get_all_quests"/>
         <s:a class="navbar-brand" href="%{getQuests}">Dashboard</s:a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
