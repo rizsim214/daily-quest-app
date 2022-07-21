@@ -9,7 +9,7 @@
             <s:a href="%{getQuests}" class="text-primary fw-bold text-deocration-none  "><i class="fas fa-arrow-left me-2"></i>Go back</s:a>
             <!-- Button trigger modal -->
             <s:if test="userBean.userID == #session.sessionUserID">
-                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#updateUserModal">
                     <i class="fas fa-pen me-2"></i>Update
                 </button>
             </s:if>
@@ -42,7 +42,7 @@
 <s:include value="/views/includes/_footer.jsp" />
 
   <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="updateUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -51,7 +51,6 @@
             </div>
             <div class="modal-body">
                 <form action="updateUser" method="POST">
-                    
                     <input type="email" name="userBean.userEmail" placeholder="Email Address" value='<s:property value="#session.sessionUser.userEmail"/>' class="form-control my-2" required/>
                     <input type="text" name="userBean.userName" placeholder="Username" value='<s:property value="#session.sessionUser.userName"/>' class="form-control my-2" required/>
                     <input type="text" name="userBean.userAddress" placeholder="Home Address" value='<s:property value="#session.sessionUser.userAddress"/>' class="form-control my-2" required/>
