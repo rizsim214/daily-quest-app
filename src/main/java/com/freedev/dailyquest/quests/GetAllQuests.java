@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import org.apache.struts2.action.SessionAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -29,11 +29,6 @@ public class GetAllQuests extends ActionSupport implements SessionAware{
         return SUCCESS;
     }
 
-    @Override
-    public void withSession(Map<String, Object> session) {
-        this.userSession = session;
-    }
-
     public List<Quest> getQuests() {
         return quests;
     }
@@ -48,6 +43,11 @@ public class GetAllQuests extends ActionSupport implements SessionAware{
 
     public void setDisplayMessage(String displayMessage) {
         this.displayMessage = displayMessage;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> session) {
+        this.userSession = session;
     }
     
 }

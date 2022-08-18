@@ -9,9 +9,12 @@
     <name>dailyquest</name>
 
     <properties>
-        <struts2.version>6.0.0</struts2.version>
+        <struts2.version>2.5.30</struts2.version>
         <log4j2.version>2.17.2</log4j2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
@@ -72,7 +75,12 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.29</version>
         </dependency>
-       
+        
+        <dependency>
+            <groupId>com.jgeppert.struts2.jquery</groupId>
+            <artifactId>struts2-jquery-plugin</artifactId>
+            <version>4.0.3</version>
+        </dependency>
     </dependencies>
 
     <build>

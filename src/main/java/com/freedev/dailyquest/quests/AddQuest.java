@@ -2,7 +2,7 @@ package com.freedev.dailyquest.quests;
 
 import java.util.Map;
 
-import org.apache.struts2.action.SessionAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -32,8 +32,9 @@ public class AddQuest extends ActionSupport implements SessionAware{
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
+
     @Override
-    public void withSession(Map<String, Object> session) {
+    public void setSession(Map<String, Object> session) {
         this.userSession = session;
     }
 }

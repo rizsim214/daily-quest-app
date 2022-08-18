@@ -2,7 +2,7 @@ package com.freedev.dailyquest.users;
 
 import java.util.Map;
 
-import org.apache.struts2.action.SessionAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -41,11 +41,7 @@ public class Login extends ActionSupport implements SessionAware{
     public void setUserBean(User userBean) {
         this.userBean = userBean;
     }
-    
-    @Override
-    public void withSession(Map<String, Object> session) {
-        this.userSession = session;
-    }
+
     public String getErrorMessage() {
         return errorMessage;
     }
@@ -57,5 +53,9 @@ public class Login extends ActionSupport implements SessionAware{
     }
     public void setUserSession(Map<String, Object> userSession) {
         this.userSession = userSession;
+    }
+    @Override
+    public void setSession(Map<String, Object> session) {
+        this.userSession = session;
     }
 }
