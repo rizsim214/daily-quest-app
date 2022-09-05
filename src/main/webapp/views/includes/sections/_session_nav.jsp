@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2">
+<nav class="navbar navbar-expand-lg navbar-dark bg-success py-3">
     <div class="container col-md-9 mx-auto">
         <s:url var="getQuests" action="get_all_quests"/>
         <s:a class="navbar-brand" href="%{getQuests}">Dashboard</s:a>

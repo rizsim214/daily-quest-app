@@ -17,17 +17,19 @@ public class QuestDAO {
     public static boolean saveQuestToDB(Quest questObj, Object object) throws Exception {
         boolean result = false;
         Connection conn = UsersDAO.connectToDB();
-        String sql = "INSERT INTO quest_tbl(quest_provider_fk_id, quest_name, quest_description, quest_date, quest_location, quest_timespan, quest_bounty, quest_difficulty) VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO quest_tbl(quest_provider_fk_id, quest_name, quest_description, quest_location, quest_bounty, quest_difficulty, quest_start_date, quest_start_time, quest_end_time) VALUES(?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement prst = conn.prepareStatement(sql);
             prst.setObject(1, object);
             prst.setString(2, questObj.getQuestName());
             prst.setString(3, questObj.getQuestDescription());
-            prst.setString(4, questObj.getQuestDate());
-            prst.setString(5, questObj.getQuestLocation());
-            prst.setString(6, questObj.getQuestTimespan());
-            prst.setDouble(7, questObj.getQuestBounty());
-            prst.setString(8, questObj.getQuestDifficulty());
+            prst.setString(4, questObj.getQuestLocation());
+            prst.setDouble(5, questObj.getQuestBounty());
+            prst.setString(6, questObj.getQuestDifficulty());
+            prst.setDate(7, (Date) questObj.getStartDate());
+            prst.setTimestamp(8, questObj.getStartTime());
+            prst.setTimestamp(9, questObj.getEndTime());
+            
             result = prst.execute();
             
         } catch (Exception e) {
@@ -90,12 +92,13 @@ public class QuestDAO {
                 quest.setQuestProvider(rs.getString("user_name"));
                 quest.setQuestName(rs.getString("quest_name"));
                 quest.setQuestDescription(rs.getString("quest_description"));
-                quest.setQuestDate(rs.getString("quest_date"));
                 quest.setQuestLocation(rs.getString("quest_location"));
-                quest.setQuestTimespan(rs.getString("quest_timespan"));
                 quest.setQuestBounty(rs.getDouble("quest_bounty"));
                 quest.setQuestDifficulty(rs.getString("quest_difficulty"));
                 quest.setQuestStatus(rs.getString("quest_status"));
+                quest.setStartDate(rs.getDate("quest_start_date"));
+                quest.setStartTime(rs.getTimestamp("quest_start_time"));
+                quest.setEndTime(rs.getTimestamp("quest_end_time"));
                 allQuests.add(quest);
             }
             return allQuests;

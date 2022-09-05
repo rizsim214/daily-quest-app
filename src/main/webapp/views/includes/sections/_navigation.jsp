@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<nav class="navbar navbar-expand-lg navbar-light bg-light py-4 shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light bg-light py-4 shadow-lg">
     <div class="container">
         <s:url var="home" action="welcome"/>
         <s:a class="navbar-brand" href="%{home}">Daily Quest</s:a>
