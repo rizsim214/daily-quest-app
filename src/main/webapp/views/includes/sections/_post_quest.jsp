@@ -13,12 +13,12 @@
         <s:form action="add_quest" class="px-4" style="width: 100%;" theme="simple">
             <!-- <s:hidden type="number" name="questBean.questProviderId" value="#session.sessionUser.userID"/> -->
             <s:textfield class="form-control mt-2" placeholder="Title" name="questBean.questName"/>
-            <!-- <s:textfield class="form-control mt-2" placeholder="Start Date (dd-mm-yyyy)" name="questBean.questDate"/> -->
+            <s:textfield class="form-control mt-2" placeholder="Start Date (dd-mm-yyyy)" name="questBean.questDate"/>
             <s:textfield class="form-control mt-2" placeholder="Location Address" name="questBean.questLocation"/>
             <!-- NEED START DATE & END DATE ENDPOINT TO POST QUEST ACTION -->
             <!-- <sj:datepicker id="time1" placeholder="Start Date" name="start" class="form-control" value="%{new java.util.Date()}" timepicker="true" />
             <sj:datepicker id="time2" placeholder="End Date" name="end" class="form-control" value="%{new java.util.Date()}" timepicker="true" /> -->
-            <!-- <s:textfield class="form-control mt-2" placeholder="Timespan (9am - 4pm)" name="questBean.questTimespan"/> -->
+            <s:textfield class="form-control mt-2" placeholder="Timespan (9am - 4pm)" name="questBean.questTimespan"/>
             <s:textfield type="number" min="0" class="form-control mt-2" placeholder="Quest Bounty (rate/hour)" name="questBean.questBounty"/>
             <s:select headerKey="-1" headerValue="Task Difficulty"
                 list="{'Easy', 'Medium', 'Hard'}" 
