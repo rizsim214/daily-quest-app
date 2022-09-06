@@ -1,14 +1,13 @@
 package com.freedev.dailyquest.quests;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 public class Quest {
     private Integer questId, questProviderId;
     private String questName, questDescription, questLocation, questStatus, questDifficulty, questProvider;
     private Double questBounty;
-    private Date createAt = new Date(), updatedAt, startDate;
-    private Timestamp startTime, endTime;
+    private Date createAt = new Date(), updatedAt, startDate, endDate;
+    
     
     public Integer getQuestId() {
         return questId;
@@ -76,31 +75,27 @@ public class Quest {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-    public Timestamp getStartTime() {
-        return startTime;
-    }
-    public void setStartTime(Timestamp startTime) {
-        this.startTime = startTime;
-    }
-    public Timestamp getEndTime() {
-        return endTime;
-    }
-    public void setEndTime(Timestamp endTime) {
-        this.endTime = endTime;
-    }
+   
     public Date getStartDate() {
         return startDate;
     }
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
+    public Date getEndDate() {
+        return endDate;
+    }
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
     @Override
     public String toString() {
-        return "Quest [createAt=" + createAt + ", endTime=" + endTime + ", questBounty=" + questBounty
+        return "Quest [createAt=" + createAt + ", endDate=" + endDate + ", questBounty=" + questBounty
                 + ", questDescription=" + questDescription + ", questDifficulty=" + questDifficulty + ", questId="
                 + questId + ", questLocation=" + questLocation + ", questName=" + questName + ", questProvider="
                 + questProvider + ", questProviderId=" + questProviderId + ", questStatus=" + questStatus
-                + ", startDate=" + startDate + ", startTime=" + startTime + ", updatedAt=" + updatedAt + "]";
+                + ", startDate=" + startDate + ", updatedAt=" + updatedAt + "]";
     }
+   
         
 }
