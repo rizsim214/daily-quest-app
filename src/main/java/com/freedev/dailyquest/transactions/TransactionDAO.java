@@ -18,7 +18,7 @@ public class TransactionDAO {
     public static boolean saveTransactionToDB(Transaction transactionObj) throws Exception {
         boolean result = false;
         Connection conn = UsersDAO.connectToDB();
-        String sql = "INSERT INTO quest_transaction_tbl(quest_transaction_quest_id, quest_seeker_id, quest_provider_id) VALUES(?,?,?)";
+        String sql = "INSERT INTO quest_transaction_tbl(quest_transaction_id, quest_transaction_quest_id, quest_seeker_id, quest_provider_id) VALUES(?,?,?)";
         try {
             PreparedStatement prst = conn.prepareStatement(sql);
             prst.setInt(1, transactionObj.getQuestID() );
@@ -181,7 +181,6 @@ public class TransactionDAO {
     public static List<Transaction> getAllSeekerTransactions() throws Exception {
         List<Transaction> transactions = null;
         Connection conn = UsersDAO.connectToDB();
-        // Join Tables then Set Transactions with quest and user to get data
         String sql = "SELECT * FROM quest_transaction_tbl JOIN quest_tbl ON quest_transaction_tbl.quest_transaction_quest_id = quest_tbl.quest_id JOIN users_tbl ON quest_transaction_tbl.quest_provider_id = users_tbl.user_id WHERE quest_transaction_status = 'done' ORDER BY quest_transaction_id DESC";
         try {
             transactions = new ArrayList<>();

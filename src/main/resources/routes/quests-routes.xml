@@ -22,6 +22,9 @@
       <action name="get_all_quests" class="com.freedev.dailyquest.quests.GetAllQuests">
         <result name="success" type="chain">quest_board</result>
       </action>
+      <action name="search_quest_board" class="com.freedev.dailyquest.quests.SearchQuestBoard">
+        <result name="success" type="chain">quest_board</result>
+      </action>
      
     </package>
 </struts>
