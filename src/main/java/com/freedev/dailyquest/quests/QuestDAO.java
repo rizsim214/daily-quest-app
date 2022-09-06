@@ -104,4 +104,36 @@ public class QuestDAO {
         }
         return allQuests;
     }
+
+    // this is the DAO for searching a specific quest
+    public static List<Quest> searchAllQuestFromDB(String searchTitle) throws Exception {
+        List<Quest> allQuests = null;
+        Connection conn = UsersDAO.connectToDB();
+        String sql = "Select * FROM quest_tbl JOIN users_tbl ON users_tbl.user_id = quest_tbl.quest_provider_fk_id WHERE MATCH (quest_name, quest_description) AGAINST ('"+searchTitle+"' IN NATURAL LANGUAGE MODE)";
+        try {
+            allQuests = new ArrayList<>();
+            PreparedStatement prst = conn.prepareStatement(sql);
+            ResultSet rs = prst.executeQuery();
+
+            while(rs.next()){
+                Quest quest = new Quest();
+                quest.setQuestId(rs.getInt("quest_id"));
+                quest.setQuestProviderId(rs.getInt("quest_provider_fk_id"));
+                quest.setQuestProvider(rs.getString("user_name"));
+                quest.setQuestName(rs.getString("quest_name"));
+                quest.setQuestDescription(rs.getString("quest_description"));
+                quest.setQuestDate(rs.getString("quest_date"));
+                quest.setQuestLocation(rs.getString("quest_location"));
+                quest.setQuestTimespan(rs.getString("quest_timespan"));
+                quest.setQuestBounty(rs.getDouble("quest_bounty"));
+                quest.setQuestDifficulty(rs.getString("quest_difficulty"));
+                quest.setQuestStatus(rs.getString("quest_status"));
+                allQuests.add(quest);
+            }
+            return allQuests;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return allQuests;
+    }
 }
