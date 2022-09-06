@@ -7,17 +7,17 @@
     <s:set var="error_message" value="errorMessage" />
     
     <s:if test="#success_message != null ">
-        <div class="alert alert-success mx-auto col-lg-7" role="alert">
+        <div class="alert alert-success mx-auto col-lg-7 mt-3" role="alert">
             <p class="text-success text-center "><s:property value="#success_message"/></p>
         </div>
     </s:if>
     <s:elseif test="#error_message != null">
-        <div class="alert alert-danger mx-auto col-lg-7" role="alert">
+        <div class="alert alert-danger mx-auto col-lg-7 mt-3" role="alert">
             <p class="text-danger text-center "><s:property value="#error_message"/></p>
         </div>
     </s:elseif>
 </div>
-<div class="container mx-auto mb-5 pb-4 px-5">
+<div class="container-fluid mx-auto mb-5 pb-4 px-5">
     <div class="text-center mb-2">
         <h3 class=" mt-3 mb-0">Quests Board</h3>
         <s:url var="get_posted_quests" action="get_all_posted_quests"/>
