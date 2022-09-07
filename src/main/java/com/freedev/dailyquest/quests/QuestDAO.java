@@ -17,7 +17,7 @@ public class QuestDAO {
     public static boolean saveQuestToDB(Quest questObj, Object object) throws Exception {
         boolean result = false;
         Connection conn = UsersDAO.connectToDB();
-        String sql = "INSERT INTO quest_tbl(quest_provider_fk_id, quest_name, quest_description, quest_location, quest_bounty, quest_difficulty, quest_start_date, quest_end_date ) VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO quest_tbl(quest_provider_fk_id, quest_name, quest_description, quest_location, quest_bounty, quest_difficulty, quest_start_date, quest_end_date, createdAt ) VALUES(?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement prst = conn.prepareStatement(sql);
             prst.setObject(1, object);
@@ -26,9 +26,10 @@ public class QuestDAO {
             prst.setString(4, questObj.getQuestLocation());
             prst.setDouble(5, questObj.getQuestBounty());
             prst.setString(6, questObj.getQuestDifficulty());
-            prst.setDate(7, (Date) questObj.getStartDate());
-            prst.setDate(8, (Date) questObj.getEndDate());
-            
+            prst.setDate(7, questObj.getStartDate());
+            prst.setDate(8, questObj.getEndDate());
+            prst.setDate(9, Date.valueOf(LocalDate.now()));
+
             result = prst.execute();
             
         } catch (Exception e) {
