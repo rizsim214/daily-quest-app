@@ -125,9 +125,9 @@ public class QuestDAO {
                 quest.setQuestProvider(rs.getString("user_name"));
                 quest.setQuestName(rs.getString("quest_name"));
                 quest.setQuestDescription(rs.getString("quest_description"));
-                quest.setQuestDate(rs.getString("quest_date"));
+                // quest.setQuestDate(rs.getString("quest_date"));
                 quest.setQuestLocation(rs.getString("quest_location"));
-                quest.setQuestTimespan(rs.getString("quest_timespan"));
+                // quest.setQuestTimespan(rs.getString("quest_timespan"));
                 quest.setQuestBounty(rs.getDouble("quest_bounty"));
                 quest.setQuestDifficulty(rs.getString("quest_difficulty"));
                 quest.setQuestStatus(rs.getString("quest_status"));
