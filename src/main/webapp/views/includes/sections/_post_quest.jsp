@@ -26,22 +26,15 @@
                 name="questBean.startDate" 
                 class="form-control mt-2" 
                 value="%{new java.sql.Date()}" 
-                timepicker="true" 
-                timepickerAmPm="true "
-                timepickerFormat="hh:mm TT" 
+                dateFormat="yyyy-MM-dd"
             />
-            <sj:datepicker id="time2" 
-                placeholder="End Date" 
-                name="questBean.endDate" 
-                class="form-control mt-2" 
-                value="%{new java.sql.Date()}" 
-                timepicker="true" 
-                timepickerAmPm="true "
-                timepickerFormat="hh:mm TT"
+            <s:textfield class="form-control mt-2" 
+                placeholder="How long will the task last?" 
+                name="questBean.questTimespan"
             />
             <s:textfield type="number" 
                 min="0" class="form-control mt-2" 
-                placeholder="Quest Bounty(total)" 
+                placeholder="How much is the quest bounty?" 
                 name="questBean.questBounty"
             />
             <s:select headerKey="-1" headerValue="Task Difficulty"
@@ -49,7 +42,7 @@
                 name="questBean.questDifficulty" 
                 class="form-control mt-2" />
             <s:textarea class="form-control mt-2" 
-                placeholder="Quest Information" 
+                placeholder="Quest Description" 
                 name="questBean.questDescription"
             />
             <s:submit value="Save" class="btn btn-outline-primary d-block w-100 mt-2"/>

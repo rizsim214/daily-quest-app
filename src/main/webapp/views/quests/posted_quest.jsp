@@ -19,21 +19,21 @@
         <s:iterator value="postedQuests" status="postedQuestRows">
             <div class="card m-2 col-md-4 rounded shadow-lg " style="width: 20rem;">
                 <div class="card-header mt-1">
-                    <p class="h5 card-title fw-bold"><s:property value="questName"/></p>
-                    <p class="h6 card-subtitle mb-2 text-muted"><s:property value="questLocation"/></p>
-                    <small class="text-secondary">Status: <s:property value="questStatus"/></small>
+                    <p class="h5 card-title fw-bold text-capitalize"><s:property value="questName"/></p>
+                    <p class="h6 card-subtitle mb-2 text-muted text-capitalize"><s:property value="questLocation"/></p>
+                    <small class="text-secondary text-capitalize">Status: <s:property value="questStatus"/></small>
                 </div>
                 <div class="card-body">
-                    <p class="h6 text-dark"><span class="mx-1">P<s:property value="questBounty"/>.00 /hr </span> - <span class="mx-1"><s:property value="questTimespan"/></span></p>
+                    <p class="h6 text-dark"><span class="mx-1">P<s:property value="questBounty"/>.00 </span> - <span class="mx-1"><s:property value="questTimespan"/></span></p>
                     <hr>
-                    <p class="text-justify"><s:property value="questDescription"/></p>
+                    <p class="text-justify text-capitalize"><s:property value="questDescription"/></p>
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-end align-items-center">
                         <s:url var="deleteQuest" action="delete_quest">
                             <s:param name="questID" value="questId" />
                         </s:url>
-                        <p class=" h6 card-subtitle me-2 text-muted">Start Date: <s:property value="questDate"/></p>
+                        <p class=" h6 card-subtitle me-2 text-muted">Start Date: <s:property value="startDate"/></p>
                         <s:a href="" class="btn btn-outline-primary col-3 mx-1"><i class="fas fa-pen fs-5"></i></s:a>
                         <s:a href="%{deleteQuest}" class="btn btn-outline-danger col-3 mx-1" onclick="return confirm('Are you sure you want to delete posted quest?')"><i class="fas fa-trash-can fs-5"></i></s:a>
                     </div>
