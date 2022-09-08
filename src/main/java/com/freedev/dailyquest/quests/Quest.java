@@ -4,10 +4,9 @@ import java.sql.Date;
 
 public class Quest {
     private Integer questId, questProviderId;
-    private String questName, questDescription, questLocation, questStatus, questDifficulty, questProvider;
+    private String questName, questDescription, questLocation, questStatus, questDifficulty, questProvider, questTimespan;
     private Double questBounty;
-    private Date createdAt, updatedAt;
-    private Date startDate, endDate;
+    private Date createdAt, updatedAt, startDate;
     
     public Integer getQuestId() {
         return questId;
@@ -57,31 +56,17 @@ public class Quest {
     public void setQuestProvider(String questProvider) {
         this.questProvider = questProvider;
     }
+    public String getQuestTimespan() {
+        return questTimespan;
+    }
+    public void setQuestTimespan(String questTimespan) {
+        this.questTimespan = questTimespan;
+    }
     public Double getQuestBounty() {
         return questBounty;
     }
     public void setQuestBounty(Double questBounty) {
         this.questBounty = questBounty;
-    }
-    
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-   
-    public Date getStartDate() {
-        return startDate;
-    }
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-    public Date getEndDate() {
-        return endDate;
-    }
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
     }
     public Date getCreatedAt() {
         return createdAt;
@@ -89,14 +74,17 @@ public class Quest {
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
-
-    @Override
-    public String toString() {
-        return "Quest [createdAt=" + createdAt + ", endDate=" + endDate + ", questBounty=" + questBounty
-                + ", questDescription=" + questDescription + ", questDifficulty=" + questDifficulty + ", questId="
-                + questId + ", questLocation=" + questLocation + ", questName=" + questName + ", questProvider="
-                + questProvider + ", questProviderId=" + questProviderId + ", questStatus=" + questStatus
-                + ", startDate=" + startDate + ", updatedAt=" + updatedAt + "]";
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
-        
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+    public Date getStartDate() {
+        return startDate;
+    }
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+    
 }
