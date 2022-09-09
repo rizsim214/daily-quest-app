@@ -15,10 +15,12 @@
             <s:textfield class="form-control mt-2" 
                 placeholder="Title" 
                 name="questBean.questName"
+                required="true"
             />
             <s:textfield class="form-control mt-2" 
                 placeholder="Location Address" 
                 name="questBean.questLocation"
+                required="true"
             />
             <!-- NEED START DATE & END DATE ENDPOINT TO POST QUEST ACTION -->
             <sj:datepicker id="time1" 
@@ -31,11 +33,13 @@
             <s:textfield class="form-control mt-2" 
                 placeholder="How long will the task last?" 
                 name="questBean.questTimespan"
+                required="true"
             />
             <s:textfield type="number" 
                 min="0" class="form-control mt-2" 
                 placeholder="How much is the quest bounty?" 
                 name="questBean.questBounty"
+                required="true"
             />
             <s:select headerKey="-1" headerValue="Task Difficulty"
                 list="{'Easy', 'Medium', 'Hard'}" 
@@ -44,6 +48,7 @@
             <s:textarea class="form-control mt-2" 
                 placeholder="Quest Description" 
                 name="questBean.questDescription"
+                required="true"
             />
             <s:submit value="Save" class="btn btn-outline-primary d-block w-100 mt-2"/>
         </s:form>

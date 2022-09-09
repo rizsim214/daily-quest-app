@@ -28,7 +28,6 @@ public class GetAcceptedQuests extends ActionSupport implements SessionAware{
         if(transactions.isEmpty()){
             setDisplayMessage("No Accepted Quests...");
         }
-        System.out.println(getDisplayMessage());
         return SUCCESS;
     }
 

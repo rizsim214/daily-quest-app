@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Quest {
     private Integer questId, questProviderId;
-    private String questName, questDescription, questLocation, questStatus, questDifficulty, questProvider, questTimespan;
+    private String questName, questDescription, questLocation, questStatus, questDifficulty, questProvider, questTimespan, userStatus;
     private Double questBounty;
     private Date createdAt, updatedAt, startDate;
     
@@ -85,6 +85,12 @@ public class Quest {
     }
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
+    }
+    public String getUserStatus() {
+        return userStatus;
+    }
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
     }
     
 }

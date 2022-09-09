@@ -43,8 +43,15 @@
                         <s:param name="transaction.questID" value="questID" />
                         <s:param name="transaction.questTransactionID" value="questTransactionID" />
                     </s:url>
-                    <td><s:a href="%{cancel_transaction}" class="btn btn-outline-warning" onclick="return confirm('You are about to cancel transaction, proceed?')" ><i class="fas fa-xmark"></i></s:a></td>
-                </tr>
+                    <td>
+                        <s:if test="transaction_status == 'ongoing'">
+                            <s:a href="%{cancel_transaction}" class="btn btn-outline-warning disabled" onclick="return confirm('You are about to cancel transaction, proceed?')" ><i class="fas fa-xmark"></i></s:a>
+                        </s:if>
+                        <s:else>
+                            <s:a href="%{cancel_transaction}" class="btn btn-outline-warning " onclick="return confirm('You are about to cancel transaction, proceed?')" ><i class="fas fa-xmark"></i></s:a>
+                        </s:else>
+                    </td>
+                    </tr>
         </s:iterator>
         </tbody>
     </table>

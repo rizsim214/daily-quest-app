@@ -98,6 +98,7 @@ public class QuestDAO {
                 quest.setQuestStatus(rs.getString("quest_status"));
                 quest.setStartDate(rs.getDate("quest_start_date"));
                 quest.setQuestTimespan(rs.getString("quest_timespan"));
+                quest.setUserStatus(rs.getString("user_status"));
                 allQuests.add(quest);
             }
             return allQuests;
