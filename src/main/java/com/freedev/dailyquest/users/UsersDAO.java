@@ -60,6 +60,7 @@ public class UsersDAO {
                 LoggedUser.setUserName(rs.getString("user_name"));
                 LoggedUser.setUserAddress(rs.getString("user_address"));
                 LoggedUser.setUserPhoneNumber(rs.getString("user_contact"));
+                LoggedUser.setUserStatus(rs.getString("user_status"));
             }
             return LoggedUser;
 
@@ -85,6 +86,7 @@ public class UsersDAO {
                 user.setUserAddress(rs.getString("user_address"));
                 user.setUserPhoneNumber(rs.getString("user_contact"));
                 user.setUserPassword(rs.getString("user_password"));
+
             }
         } catch (Exception e) {
             e.printStackTrace();

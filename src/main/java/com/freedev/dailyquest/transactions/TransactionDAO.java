@@ -18,18 +18,20 @@ public class TransactionDAO {
     public static boolean saveTransactionToDB(Transaction transactionObj) throws Exception {
         boolean result = false;
         Connection conn = UsersDAO.connectToDB();
-        String sql = "INSERT INTO quest_transaction_tbl(quest_transaction_id, quest_transaction_quest_id, quest_seeker_id, quest_provider_id) VALUES(?,?,?)";
+        String sql = "INSERT INTO quest_transaction_tbl(quest_transaction_quest_id, quest_seeker_id, quest_provider_id) VALUES(?,?,?)";
         try {
             PreparedStatement prst = conn.prepareStatement(sql);
-            prst.setInt(1, transactionObj.getQuestID() );
+            prst.setInt(1, transactionObj.getQuestID());
             prst.setInt(2, transactionObj.getQuestSeekerID());
             prst.setInt(3, transactionObj.getQuestProviderID());
             updateQuestStatusToAccepted(transactionObj.getQuestID());
+            updateUserStatus(transactionObj.getQuestSeekerID(), "questing");
             prst.execute();
 
             result = true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            System.out.println("some kind of error");
         }
         return result;
     }
@@ -48,8 +50,22 @@ public class TransactionDAO {
             System.out.println(e.getMessage());
         }
         return result;
+    }   
+    public static boolean updateUserStatus(int userID, String status) throws Exception {
+        boolean result = false;
+        Connection conn = UsersDAO.connectToDB();
+        String sql = "UPDATE users_tbl SET user_status = ?,updatedAt = ? WHERE user_id = '"+userID+"'";
+        try {
+            PreparedStatement prst = conn.prepareStatement(sql);
+            prst.setString(1, status);
+            prst.setDate(2, Date.valueOf(LocalDate.now()));
+            prst.execute();
+            result = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
     }
-
     public static boolean updateQuestTransactionStatus(Transaction transaction, String status) throws Exception {
         boolean result = false;
         Connection conn = UsersDAO.connectToDB();
@@ -58,6 +74,7 @@ public class TransactionDAO {
             PreparedStatement prst = conn.prepareStatement(sql);
             prst.setString(1, status);
             prst.setDate(2, Date.valueOf(LocalDate.now()));
+            
             prst.execute();
             result = true;
         } catch (Exception e) {
@@ -74,6 +91,7 @@ public class TransactionDAO {
             PreparedStatement prst = conn.prepareStatement(sql);
             prst.setString(1, status);
             prst.setDate(2, Date.valueOf(LocalDate.now()));
+            updateUserStatus(transaction.getQuestSeekerID(), "active");
             prst.execute();
             QuestDAO.updateQuestStatusToActive(transaction.getQuestID(), questStatus);
             result = true;
@@ -103,7 +121,7 @@ public class TransactionDAO {
                transaction.setContactInfo(rs.getString("user_contact"));
                transaction.setTimespan(rs.getString("quest_timespan"));
                transaction.setLocation(rs.getString("quest_location"));
-               transaction.setRatePerHour(rs.getDouble("quest_bounty"));
+               transaction.setQuestBounty(rs.getDouble("quest_bounty"));
                transaction.setDescription(rs.getString("quest_description"));
                transaction.setTransaction_status(rs.getString("quest_transaction_status"));
                transaction.setQuestStatus(rs.getString("quest_status"));
@@ -129,13 +147,14 @@ public class TransactionDAO {
                Transaction transaction = new Transaction();
                transaction.setQuestTransactionID(rs.getInt("quest_transaction_id"));
                transaction.setQuestName(rs.getString("quest_name"));
+               transaction.setQuestSeekerID(rs.getInt("quest_seeker_id"));
                transaction.setQuestID(rs.getInt("quest_id"));
                transaction.setQuestSeeker(rs.getString("user_name"));
                transaction.setContactInfo(rs.getString("user_contact"));
-               transaction.setQuestDate(rs.getString("quest_date"));
+               transaction.setQuestDate(rs.getDate("quest_start_date"));
                transaction.setTimespan(rs.getString("quest_timespan"));
                transaction.setLocation(rs.getString("quest_location"));
-               transaction.setRatePerHour(rs.getDouble("quest_bounty"));
+               transaction.setQuestBounty(rs.getDouble("quest_bounty"));
                transaction.setDescription(rs.getString("quest_description"));
                transaction.setTransaction_status(rs.getString("quest_transaction_status"));
                transaction.setQuestStatus(rs.getString("quest_status"));
@@ -165,7 +184,7 @@ public class TransactionDAO {
                transaction.setQuestSeekerID(rs.getInt("quest_seeker_id"));
                transaction.setQuestID(rs.getInt("quest_transaction_quest_id"));
                transaction.setQuestSeeker(rs.getString("user_name"));
-               transaction.setRatePerHour(rs.getDouble("quest_bounty"));
+               transaction.setQuestBounty(rs.getDouble("quest_bounty"));
                transaction.setUpdatedAt(rs.getDate("updatedAt"));
                transaction.setLocation(rs.getString("quest_location"));
                transaction.setTransaction_status(rs.getString("quest_transaction_status"));
@@ -195,7 +214,7 @@ public class TransactionDAO {
                transaction.setQuestSeekerID(rs.getInt("quest_seeker_id"));
                transaction.setQuestID(rs.getInt("quest_transaction_quest_id"));
                transaction.setQuestProvider(rs.getString("user_name"));
-               transaction.setRatePerHour(rs.getDouble("quest_bounty"));
+               transaction.setQuestBounty(rs.getDouble("quest_bounty"));
                transaction.setUpdatedAt(rs.getDate("updatedAt"));
                transaction.setLocation(rs.getString("quest_location"));
                transaction.setTransaction_status(rs.getString("quest_transaction_status"));
