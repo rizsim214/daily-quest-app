@@ -74,6 +74,7 @@ public class TransactionDAO {
             PreparedStatement prst = conn.prepareStatement(sql);
             prst.setString(1, status);
             prst.setDate(2, Date.valueOf(LocalDate.now()));
+            
             prst.execute();
             result = true;
         } catch (Exception e) {
@@ -90,6 +91,7 @@ public class TransactionDAO {
             PreparedStatement prst = conn.prepareStatement(sql);
             prst.setString(1, status);
             prst.setDate(2, Date.valueOf(LocalDate.now()));
+            updateUserStatus(transaction.getQuestSeekerID(), "active");
             prst.execute();
             QuestDAO.updateQuestStatusToActive(transaction.getQuestID(), questStatus);
             result = true;
@@ -145,6 +147,7 @@ public class TransactionDAO {
                Transaction transaction = new Transaction();
                transaction.setQuestTransactionID(rs.getInt("quest_transaction_id"));
                transaction.setQuestName(rs.getString("quest_name"));
+               transaction.setQuestSeekerID(rs.getInt("quest_seeker_id"));
                transaction.setQuestID(rs.getInt("quest_id"));
                transaction.setQuestSeeker(rs.getString("user_name"));
                transaction.setContactInfo(rs.getString("user_contact"));

@@ -55,8 +55,8 @@
                             <s:param name="transaction.questProviderID" value="questProviderId" />
                             <s:param name="transaction.questSeekerID" value="#session.sessionUser.userID" />
                         </s:url>
-                        <s:property value="userStatus"/>
-                        <s:if test="#userStatus == 'questing'">
+                        
+                        <s:if test="#session.sessionUser.userStatus == 'questing'">
                             <s:a href="%{accept_quest}" class="btn btn-outline-success disabled"  onclick="return confirm('You are about to accept this quest. Proceed?')"><i class="fas fa-check"></i> Accept</s:a>
                         </s:if>
                         <s:else>

@@ -21,6 +21,7 @@
         </thead>
         <tbody>
             <s:iterator value="transactions" >
+                <!-- <s:property /> -->
                 <tr class="table-success">
                     <th scope="row"><s:property value="questName"/></th>
                     <td><s:property value="#session.sessionUser.userName"/></td>
@@ -35,7 +36,8 @@
                     <s:if test="transaction_status == 'ongoing'">
                         <s:url var="end_quest" action="endQuest" >
                             <s:param name="transaction.questID" value="questID"/>
-                            <s:param name="transaction.questTransactionID" value="questTransactionID" />
+                            <s:param name="transaction.questTransactionID" value="questTransactionID"/>
+                            <s:param name="transaction.questSeekerID" value="questSeekerID"/>
                         </s:url>
                         <td><s:a class="btn btn-primary" href="%{end_quest}"><i class="fas fa-check"></i></s:a></td>
                     </s:if>
