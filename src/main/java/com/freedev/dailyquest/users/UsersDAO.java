@@ -137,7 +137,7 @@ public class UsersDAO {
         try {
             String url = "jdbc:mysql://localhost:3306/dailyquestdb?useTimezone=true&serverTimezone=UTC";
             Class.forName("com.mysql.cj.jdbc.Driver");
-           conn = DriverManager.getConnection(url, "root", "password123");
+           conn = DriverManager.getConnection(url, "root", "password");
             
         } catch (Exception e) {
             e.printStackTrace();
