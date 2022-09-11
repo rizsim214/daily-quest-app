@@ -17,7 +17,7 @@ public class QuestDAO {
     public static boolean saveQuestToDB(Quest questObj, Object object) throws Exception {
         boolean result = false;
         Connection conn = UsersDAO.connectToDB();
-        String sql = "INSERT INTO quest_tbl(quest_provider_fk_id, quest_name, quest_description, quest_location, quest_bounty, quest_difficulty, quest_start_date, quest_end_date, createdAt ) VALUES(?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO quest_tbl(quest_provider_fk_id, quest_name, quest_description, quest_location, quest_bounty, quest_difficulty, quest_start_date, quest_timespan, createdAt ) VALUES(?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement prst = conn.prepareStatement(sql);
             prst.setObject(1, object);
@@ -27,7 +27,7 @@ public class QuestDAO {
             prst.setDouble(5, questObj.getQuestBounty());
             prst.setString(6, questObj.getQuestDifficulty());
             prst.setDate(7, questObj.getStartDate());
-            prst.setDate(8, questObj.getEndDate());
+            prst.setString(8, questObj.getQuestTimespan());
             prst.setDate(9, Date.valueOf(LocalDate.now()));
 
             result = prst.execute();
@@ -97,7 +97,7 @@ public class QuestDAO {
                 quest.setQuestDifficulty(rs.getString("quest_difficulty"));
                 quest.setQuestStatus(rs.getString("quest_status"));
                 quest.setStartDate(rs.getDate("quest_start_date"));
-                quest.setEndDate(rs.getDate("quest_end_date"));
+                quest.setQuestTimespan(rs.getString("quest_timespan"));
                 allQuests.add(quest);
             }
             return allQuests;
@@ -129,7 +129,38 @@ public class QuestDAO {
                 quest.setQuestDifficulty(rs.getString("quest_difficulty"));
                 quest.setQuestStatus(rs.getString("quest_status"));
                 quest.setStartDate(rs.getDate("quest_start_date"));
-                quest.setEndDate(rs.getDate("quest_end_date"));
+                quest.setQuestTimespan(rs.getString("quest_timespan"));
+                allQuests.add(quest);
+            }
+            return allQuests;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return allQuests;
+    }
+    // DAO for search posted quest
+    public static List<Quest> searchPostedQuestFromDB(String searchTitle) throws Exception {
+        List<Quest> allQuests = null;
+        Connection conn = UsersDAO.connectToDB();
+        String sql = "Select * FROM quest_tbl JOIN users_tbl ON users_tbl.user_id = quest_tbl.quest_provider_fk_id WHERE MATCH (quest_name, quest_description) AGAINST ('"+searchTitle+"' IN NATURAL LANGUAGE MODE)";
+        try {
+            allQuests = new ArrayList<>();
+            PreparedStatement prst = conn.prepareStatement(sql);
+            ResultSet rs = prst.executeQuery();
+
+            while(rs.next()){
+                Quest quest = new Quest();
+                quest.setQuestId(rs.getInt("quest_id"));
+                quest.setQuestProviderId(rs.getInt("quest_provider_fk_id"));
+                quest.setQuestProvider(rs.getString("user_name"));
+                quest.setQuestName(rs.getString("quest_name"));
+                quest.setQuestDescription(rs.getString("quest_description"));
+                quest.setQuestLocation(rs.getString("quest_location"));
+                quest.setQuestBounty(rs.getDouble("quest_bounty"));
+                quest.setQuestDifficulty(rs.getString("quest_difficulty"));
+                quest.setQuestStatus(rs.getString("quest_status"));
+                quest.setStartDate(rs.getDate("quest_start_date"));
+                quest.setQuestTimespan(rs.getString("quest_timespan"));
                 allQuests.add(quest);
             }
             return allQuests;

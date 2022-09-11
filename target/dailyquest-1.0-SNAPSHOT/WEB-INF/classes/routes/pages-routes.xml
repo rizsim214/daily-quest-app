@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<!--
+  - This file is included by the struts.xml file as an example
+  - of how to break up the configuration file into multiple files.
+-->
+<struts>
+    <package name="pages" namespace="/" extends="struts-default">
+
+        <default-action-ref name="welcome" />
+        <action name="welcome" class="com.freedev.dailyquest.pages.Welcome">
+            <result>/views/index.jsp</result>
+        </action>
+        <action name="sign_up" class="com.freedev.dailyquest.pages.Welcome" method="register">
+            <result name="success">/views/users/signup_user.jsp</result>
+        </action>
+        <action name="sign_in" class="com.freedev.dailyquest.pages.Welcome" method="login">
+            <result name="success">/views/users/signin_user.jsp</result>
+        </action>
+        <action name="quest_board" class="com.freedev.dailyquest.pages.Welcome" method="questBoard">
+            <result name="success">/views/quests/quest_board.jsp</result>
+        </action>
+        <action name="posted_quest" class="com.freedev.dailyquest.pages.Welcome" method="postedQuest">
+            <result name="success">/views/quests/posted_quest.jsp</result>
+        </action>
+        <action name="seeker_list" class="com.freedev.dailyquest.pages.Welcome" method="seekerList">
+            <result name="success">/views/transactions/seeker_list.jsp</result>
+        </action>
+        <action name="accepted_quests" class="com.freedev.dailyquest.pages.Welcome" method="viewAcceptedQuests">
+            <result name="success">/views/transactions/accepted_quests.jsp</result>
+        </action>
+        <action name="quest_transactions" class="com.freedev.dailyquest.pages.Welcome" method="questTransactions">
+            <result name="success">/views/transactions/quest_transactions.jsp</result>
+        </action>
+        <action name="user_profile" class="com.freedev.dailyquest.pages.Welcome" method="userProfile">
+            <result name="success">/views/users/user_profile.jsp</result>
+        </action>
+        <action name="quest_history" class="com.freedev.dailyquest.pages.Welcome" method="questHistory">
+            <result name="success">/views/transactions/quest_history.jsp</result>
+        </action>
+    </package>
+</struts>

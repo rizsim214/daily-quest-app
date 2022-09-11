@@ -1,0 +1,10 @@
+com/freedev/dailyquest/quests/QuestDAO.class
+com/freedev/dailyquest/quests/GetAllQuests.class
+com/freedev/dailyquest/quests/Quest.class
+com/freedev/dailyquest/transactions/Transaction.class
+com/freedev/dailyquest/GmailAPI/GmailAPI.class
+com/freedev/dailyquest/transactions/AcceptedQuestOptions.class
+com/freedev/dailyquest/users/UpdateUser.class
+com/freedev/dailyquest/quests/DeleteQuest.class
+com/freedev/dailyquest/users/User.class
+com/freedev/dailyquest/pages/Welcome.class

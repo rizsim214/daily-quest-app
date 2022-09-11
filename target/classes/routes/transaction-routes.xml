@@ -37,5 +37,8 @@
         <action name="getAllHistory" class="com.freedev.dailyquest.transactions.GetTransactionHistory">
             <result name="success" type="chain">quest_history</result>
         </action>
+        <action name="search_accepted_quest" class="com.freedev.dailyquest.transactions.SearchAcceptedQuest">
+            <result name="success" type="chain">accepted_quests</result>
+          </action>
     </package>
 </struts>

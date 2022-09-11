@@ -10,6 +10,7 @@
 /Users/josephcallao/Desktop/rstingz/daily-quest-app/src/main/java/com/freedev/dailyquest/transactions/AcceptQuestTransaction.java
 /Users/josephcallao/Desktop/rstingz/daily-quest-app/src/main/java/com/freedev/dailyquest/transactions/TransactionDAO.java
 /Users/josephcallao/Desktop/rstingz/daily-quest-app/src/main/java/com/freedev/dailyquest/transactions/GetAllTransactions.java
+/Users/josephcallao/Desktop/rstingz/daily-quest-app/src/main/java/com/freedev/dailyquest/transactions/SearchAcceptedQuest.java
 /Users/josephcallao/Desktop/rstingz/daily-quest-app/src/main/java/com/freedev/dailyquest/users/Register.java
 /Users/josephcallao/Desktop/rstingz/daily-quest-app/src/main/java/com/freedev/dailyquest/quests/Quest.java
 /Users/josephcallao/Desktop/rstingz/daily-quest-app/src/main/java/com/freedev/dailyquest/GmailAPI/SendGmail.java
@@ -19,4 +20,5 @@
 /Users/josephcallao/Desktop/rstingz/daily-quest-app/src/main/java/com/freedev/dailyquest/transactions/GetAcceptedQuests.java
 /Users/josephcallao/Desktop/rstingz/daily-quest-app/src/main/java/com/freedev/dailyquest/users/Login.java
 /Users/josephcallao/Desktop/rstingz/daily-quest-app/src/main/java/com/freedev/dailyquest/transactions/Transaction.java
+/Users/josephcallao/Desktop/rstingz/daily-quest-app/src/main/java/com/freedev/dailyquest/quests/SearchPostedQuest.java
 /Users/josephcallao/Desktop/rstingz/daily-quest-app/src/main/java/com/freedev/dailyquest/quests/AddQuest.java

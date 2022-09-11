@@ -8,13 +8,12 @@ public class AcceptQuestTransaction extends ActionSupport{
     private String errorMessage;
 
     public String execute() throws Exception {
-        String result;        
+        String result = INPUT;
         if(TransactionDAO.saveTransactionToDB(transaction)) {
-            setSuccessMessage("Quest Accepted! Please wait for SMS confirmation when you are chosen...");
+            setSuccessMessage("Quest Accepted! Proceed to My Daily Quest to see your accepted quests...");
             result = SUCCESS;
         } else {
             setErrorMessage("Something went wrong while processing your accept request... please try again");
-            result = INPUT;
         } 
         return result;
     }

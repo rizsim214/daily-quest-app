@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class User {
     private Integer userID;
-    private String userEmail, userPassword, userAddress, userPhoneNumber,  userName;
+    private String userEmail, userPassword, userAddress, userPhoneNumber,  userName, userStatus;
     private Date createdAt= new Date(), updateAt;
 
     public User() {}
@@ -74,15 +74,22 @@ public class User {
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
     }
+    public void setUserID(Integer userID) {
+        this.userID = userID;
+    }
+    public String getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
+    }
 
     @Override
     public String toString() {
         return "User [createdAt=" + createdAt + ", updateAt=" + updateAt + ", userAddress=" + userAddress
-                + ", userEmail=" + userEmail + ", userID=" + userID + ", userName="
-                + userName + ", userPassword=" + userPassword + ", userPhoneNumber=" + userPhoneNumber + "]";
+                + ", userEmail=" + userEmail + ", userID=" + userID + ", userName=" + userName + ", userPassword="
+                + userPassword + ", userPhoneNumber=" + userPhoneNumber + ", userStatus=" + userStatus + "]";
     }
-
- 
-    
     
 }
