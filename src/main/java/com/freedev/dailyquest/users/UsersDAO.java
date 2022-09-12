@@ -86,7 +86,7 @@ public class UsersDAO {
                 user.setUserAddress(rs.getString("user_address"));
                 user.setUserPhoneNumber(rs.getString("user_contact"));
                 user.setUserPassword(rs.getString("user_password"));
-
+                user.setUserStatus(rs.getString("user_status"));
             }
         } catch (Exception e) {
             e.printStackTrace();

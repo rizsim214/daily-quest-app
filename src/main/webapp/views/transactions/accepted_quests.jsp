@@ -57,6 +57,7 @@
                                 <s:url var="cancel_quest" action="cancelQuest" >
                                     <s:param name="transaction.questID" value="questID" />
                                     <s:param name="transaction.questTransactionID" value="questTransactionID" />
+                                    <s:param name="transaction.questSeekerID" value="#session.sessionUserID"/>
                                 </s:url>
                                 <s:url var="start_quest" action="startQuest" >
                                     <s:param name="transaction.questTransactionID" value="questTransactionID" />

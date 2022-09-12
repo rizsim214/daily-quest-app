@@ -1,14 +1,18 @@
 package com.freedev.dailyquest.transactions;
 
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.opensymphony.xwork2.ActionSupport;
 
-public class AcceptedQuestOptions extends ActionSupport{
+public class AcceptedQuestOptions extends ActionSupport implements SessionAware{
     private Transaction transaction;
     private String message;
     private String successMessage;
-
+    Map<String, Object> userSession;
     // CANCEL QUEST METHOD
-    public String execute() throws Exception{
+    public String execute() throws Exception {
         
         String result = ERROR;
         String transactionStatus = "cancelled";
@@ -69,4 +73,8 @@ public class AcceptedQuestOptions extends ActionSupport{
         this.successMessage = successMessage;
     }
     
+    @Override
+    public void setSession(Map<String, Object> session) {
+        this.userSession = session;
+    }
 }
