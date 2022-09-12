@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col">
             <h4 class="text-center">My Posted Quest Logs</h4>
-            <table class="table table-hover">
+            <table class="table table-hover mt-2" id="posted_quest_history">
                 <thead class="table-dark">
                     <tr>
                     <th scope="col">Quest Title</th>
@@ -41,7 +41,7 @@
         </div>
         <div class="col">
             <h4 class="text-center">My Accepted Quests Logs</h4>
-            <table class="table table-hover">
+            <table class="table table-hover mt-2" id="accepted_quest_history">
                 <thead class="table-primary">
                     <tr>
                     <th scope="col">Quest Title</th>
