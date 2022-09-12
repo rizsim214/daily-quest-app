@@ -24,6 +24,7 @@ public class GetAllQuests extends ActionSupport implements SessionAware{
             this.quests = QuestDAO.getAllQuestFromDB().stream()
                 .filter(isUserProvider.and(isQuestActive))
                 .collect(Collectors.toList());
+            
         }
         
         return SUCCESS;
