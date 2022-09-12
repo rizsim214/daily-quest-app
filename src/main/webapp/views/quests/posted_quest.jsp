@@ -11,9 +11,13 @@
     <div class="d-flex justify-content-between">
         <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#postQuestModal">
             <i class="fas fa-plus me-2"></i>Post Quest
-          </button>
-          <s:include value="/views/includes/sections/_post_quest.jsp"/>
-          <s:include value="/views/includes/sections/_search.jsp"/>
+        </button>
+        <s:include value="/views/includes/sections/_post_quest.jsp"/>
+        <div class="row">
+            <s:form action="search_posted_quest" theme="simple">
+                <s:textfield name="searchTitle" placeholder="Search Quest" class="form-control" />
+            </s:form>
+        </div>
     </div>
     <div class="row">
         <s:iterator value="postedQuests" status="postedQuestRows">

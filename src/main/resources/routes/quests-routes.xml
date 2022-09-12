@@ -25,6 +25,9 @@
       <action name="search_quest_board" class="com.freedev.dailyquest.quests.SearchQuestBoard">
         <result name="success" type="chain">quest_board</result>
       </action>
+      <action name="search_posted_quest" class="com.freedev.dailyquest.quests.SearchPostedQuest">
+        <result name="success" type="chain">posted_quest</result>
+      </action>
      
     </package>
 </struts>

@@ -30,7 +30,12 @@
             <small class="text-secondary mt-0">(Here you can see the quests you accepted from Quest Providers)</small>
         </div>
         <div class="d-flex justify-content-end">
-            <s:include value="/views/includes/sections/_search.jsp"/>
+            <!-- <s:include value="/views/includes/sections/_search.jsp"/> -->
+            <div class="row">
+                <s:form action="search_accepted_quest" theme="simple">
+                    <s:textfield name="searchTitle" placeholder="Search Quest" class="form-control" />
+                </s:form>
+            </div>
         </div>
         <div class="row mt-3">
             <s:if test="transactions.isEmpty() != true ">

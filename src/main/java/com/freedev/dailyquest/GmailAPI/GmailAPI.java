@@ -51,7 +51,7 @@ public class GmailAPI {
 				.setClientSecrets(clientSecrets.getDetails().getClientId().toString(),
 						clientSecrets.getDetails().getClientSecret().toString())
 				.build().setAccessToken(getAccessToken()).setRefreshToken(
-						"enter_refresh_token");//Should replace this
+						"replace this one");//Should replace this
 
 		// Create Gmail service
 		final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
@@ -65,10 +65,10 @@ public class GmailAPI {
 		try {
 			Map<String, Object> params = new LinkedHashMap<>();
 			params.put("grant_type", "refresh_token");
-			params.put("client_id", "enter_client_id"); //Should replace this
-			params.put("client_secret", "enter_client_id"); //Should replace this
+			params.put("client_id", "replace this one"); //Should replace this
+			params.put("client_secret", "replace this one"); //Should replace this
 			params.put("refresh_token",
-					"enter_refresh_token"); //Should replace this
+					"replace this one"); //Should replace this
 
 			StringBuilder postData = new StringBuilder();
 			for (Map.Entry<String, Object> param : params.entrySet()) {
