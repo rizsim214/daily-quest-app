@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <constant name="struts.devMode" value="true"/>
+    
+    <package name="default" namespace="/" extends="struts-default">
+        <default-interceptor-ref name="defaultStack" />
+        <default-action-ref name="index"/>
+        <action name="index">
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
+            <result type="redirectAction">
+                <param name="actionName">welcome</param>
+                <param name="namespace">/</param>
+            </result>
+        </action>
+    </package>
+
+    <!-- Add addition packages and configuration here. -->
+    <!-- ROUTES INCLUDE FILES -->
+    <include file="routes/pages-routes.xml"/>
+    <include file="routes/users-routes.xml"/>
+    <include file="routes/quests-routes.xml"/>
+    <include file="routes/transaction-routes.xml"/>
+</struts>

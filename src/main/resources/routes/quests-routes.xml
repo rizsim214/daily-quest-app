@@ -28,6 +28,18 @@
       <action name="search_posted_quest" class="com.freedev.dailyquest.quests.SearchPostedQuest">
         <result name="success" type="chain">posted_quest</result>
       </action>
+      <action name="filter_all_quests_by_bounty" class="com.freedev.dailyquest.quests.FilterByBounty">
+        <result name="success" type="chain">quest_board</result>
+      </action>
+      <action name="get_all_quests_easy" class="com.freedev.dailyquest.quests.FilterByEasy">
+        <result name="success" type="chain">quest_board</result>
+      </action>
+      <action name="get_all_quests_medium" class="com.freedev.dailyquest.quests.FilterbyMedium">
+        <result name="success" type="chain">quest_board</result>
+      </action>
+      <action name="get_all_quests_hard" class="com.freedev.dailyquest.quests.FilterByHard">
+        <result name="success" type="chain">quest_board</result>
+      </action>
      
     </package>
 </struts>

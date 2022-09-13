@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<!--
+  - This file is included by the struts.xml file as an example
+  - of how to break up the configuration file into multiple files.
+-->
+<struts>
+    <package name="quests" namespace="/" extends="struts-default">
+     
+      <action name="add_quest" class="com.freedev.dailyquest.quests.AddQuest" method="execute">
+        <result name="success" type="chain">get_all_posted_quests</result>
+        <result name="input" type="chain">get_all_posted_quests</result>
+      </action>
+      <action name="delete_quest" class="com.freedev.dailyquest.quests.DeleteQuest">
+        <result name="success" type="chain">get_all_posted_quests</result>
+      </action>
+      <action name="get_all_posted_quests" class="com.freedev.dailyquest.quests.GetPostedQuests">
+        <result name="success" type="chain">posted_quest</result>
+      </action>
+      <action name="get_all_quests" class="com.freedev.dailyquest.quests.GetAllQuests">
+        <result name="success" type="chain">quest_board</result>
+      </action>
+      <action name="search_quest_board" class="com.freedev.dailyquest.quests.SearchQuestBoard">
+        <result name="success" type="chain">quest_board</result>
+      </action>
+      <action name="search_posted_quest" class="com.freedev.dailyquest.quests.SearchPostedQuest">
+        <result name="success" type="chain">posted_quest</result>
+      </action>
+      <action name="filter_all_quests_by_bounty" class="com.freedev.dailyquest.quests.FilterByBounty">
+        <result name="success" type="chain">quest_board</result>
+      </action>
+      <action name="get_all_quests_easy" class="com.freedev.dailyquest.quests.FilterByEasy">
+        <result name="success" type="chain">quest_board</result>
+      </action>
+     
+    </package>
+</struts>
